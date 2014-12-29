@@ -1,0 +1,20 @@
+// CLEAR FIX
+.clearfix {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// FLOATS
+.pull-left { float: left; }
+.pull-right { float: right; }
+
+// TEXT ALIGNMENT
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
