@@ -1,26 +1,32 @@
 // DEPENDENCIES
 @import "../../scss/variables";
 @import "../../scss/mixins";
+@import "../../scss/modules/tiles";
 
 // COMPONENT STYLES
 .TotalTracks {
-  background: $color-slateDark;
-  padding: 30px 35px;
-  color: $color-marl;
-  border-bottom: 1px solid $color-slate;
+  @extend %tile;
 }
 
 .TotalTracks__content,
 .TotalTracks__icon {
-  display: inline-block;
+  @extend %tile-blocks;
 }
 
 .TotalTracks__content {
-  padding-left: 35px;
+  @extend %tile-content;
 }
 
 .TotalTracks__playcount {
-  font-weight: bold;
+  @extend %tile-value;
 }
 
-@include spinner(40px, 1s, $color-deepPurple);
+.TotalTracks__error-msg {
+  @extend %tile-error-msg;
+}
+
+.TotalTracks--error .TotalTracks__error-msg {
+  @extend %tile-error-msg-show;
+}
+
+@include spinner($size-md, 1s, $color-deepPurple);

@@ -13,29 +13,60 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       loading: true,
+      error: false,
       totalAlbums: 0
     }
   },
 
   componentWillMount: function() {
-    this.setState({ loading: true });
+    this.loadTopAlbums();
+  },
+
+  loadTopAlbums: function() {
     user.getTopAlbums(1, this.setTotalAlbums);
   },
 
   setTotalAlbums: function(data) {
-    this.setState({
-      loading: false,
-      totalAlbums: data.topalbums["@attr"].total
-    });
+    if (!data) {
+      this.setState({ error: true });
+      this.loadTopAlbums();
+    } else {
+      this.setState({
+        loading: false,
+        error: false,
+        totalAlbums: data.topalbums["@attr"].total
+      });
+    }
+  },
+
+  renderLoadingState: function() {
+    var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
+
+    return (
+      <div>
+        <div className="TotalAlbums__spinner spinner"></div>
+        <div className="TotalAlbums__error-msg">
+          { error }
+        </div>
+      </div>
+    );
   },
 
   render: function() {
     var totalAlbums = numeral(this.state.totalAlbums).format("0,0");
 
+    if (this.state.error) {
+      return (
+        <div className="TotalAlbums TotalAlbums--loading TotalAlbums--error">
+          { this.renderLoadingState() }
+        </div>
+      );
+    }
+
     if (this.state.loading) {
       return (
         <div className="TotalAlbums TotalAlbums--loading">
-          <div className="TotalAlbums__spinner spinner"></div>
+          { this.renderLoadingState() }
         </div>
       );
     }

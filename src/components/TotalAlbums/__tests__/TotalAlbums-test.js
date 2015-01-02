@@ -28,6 +28,25 @@ describe('TotalTrack Component', function() {
     });
   });
 
+  describe('When no data is returned', function() {
+    beforeEach(function() {
+      Component.setTotalAlbums(null);
+    });
+
+    it('Adds an error class to the container element', function() {
+      var element = findByClass(Component, "TotalAlbums--error");
+      var errorMsg = findByClass(Component, "TotalAlbums__error-msg");
+
+      expect(element).toBeDefined();
+      expect(errorMsg).toBeDefined();
+    });
+
+    it('Attempts to re-load itself', function() {
+      expect(user.getTopAlbums).toBeCalledWith(1, Component.setTotalAlbums);
+      expect(user.getTopAlbums.mock.calls.length > 1).toBeTruthy();
+    });
+  });
+
   describe('When the component is loading', function() {
     it('Displays a loading icon by default', function() {
       var spinner = findByClass(Component, "TotalAlbums__spinner");

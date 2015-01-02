@@ -18,24 +18,54 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    this.setState({ loading: true });
+    this.loadPlayCount();
+  },
+
+  loadPlayCount: function() {
     user.getInfo(this.setPlayCount);
   },
 
   setPlayCount: function(data) {
-    this.setState({
-      loading: false,
-      playCount: data.user.playcount
-    });
+    if (!data) {
+      this.setState({ error: true });
+      this.loadPlayCount();
+    } else {
+      this.setState({
+        loading: false,
+        error: false,
+        playCount: data.user.playcount
+      });
+    }
+  },
+
+  renderLoadingState: function() {
+    var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
+
+    return (
+      <div>
+        <div className="TotalTracks__spinner spinner"></div>
+        <div className="TotalTracks__error-msg">
+          { error }
+        </div>
+      </div>
+    );
   },
 
   render: function() {
     var playCount = numeral(this.state.playCount).format("0,0");
 
+    if (this.state.error) {
+      return (
+        <div className="TotalTracks TotalTracks--loading TotalTracks--error">
+          { this.renderLoadingState() }
+        </div>
+      );
+    }
+
     if (this.state.loading) {
       return (
         <div className="TotalTracks TotalTracks--loading">
-          <div className="TotalTracks__spinner spinner"></div>
+          { this.renderLoadingState() }
         </div>
       );
     }

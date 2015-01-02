@@ -1,0 +1,32 @@
+%tile {
+  background: $color-slateDark;
+  padding: $unit-lg $unit-xl;
+  color: $color-marl;
+  border-bottom: 1px solid $color-slate;
+}
+
+%tile-blocks {
+  display: inline-block;
+}
+
+%tile-content {
+  padding-left: $unit-xl;
+}
+
+%tile-value {
+  font-weight: bold;
+}
+
+%tile-error-msg {
+  text-align: center;
+  line-height: 1;
+  font-size: $size-xs;
+  padding-top: $unit-md;
+  text-shadow: 0px 0px 5px #0E0E0F;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+%tile-error-msg-show {
+  opacity: 0.5;
+}
