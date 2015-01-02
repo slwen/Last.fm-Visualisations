@@ -1,0 +1,26 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+// COMPONENT STYLES
+.TotalTracks {
+  background: $color-slateDark;
+  padding: 30px 35px;
+  color: $color-marl;
+  border-bottom: 1px solid $color-slate;
+}
+
+.TotalTracks__content,
+.TotalTracks__icon {
+  display: inline-block;
+}
+
+.TotalTracks__content {
+  padding-left: 35px;
+}
+
+.TotalTracks__playcount {
+  font-weight: bold;
+}
+
+@include spinner(40px, 1s, $color-deepPurple);

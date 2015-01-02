@@ -2,39 +2,47 @@
 
 var path = '../';
 
-jest.dontMock(path);
+jest.autoMockOff();
+jest.mock('../../../api/user');
 
 describe('TotalTrack Component', function() {
   var React       = require('react/addons');
+  var user        = require('../../../api/user');
   var TestUtils   = React.addons.TestUtils;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
   var TotalTracks = require(path);
   var Component;
 
   beforeEach(function() {
+    user.getInfo.mockClear();
     Component = TestUtils.renderIntoDocument(<TotalTracks />);
   });
 
   describe('When data is requested', function() {
-    it('Requests from the correct API endpoint', function() {
-      // Check correct endpoint is used
+    it('Makes one correct request for the data', function() {
+      expect(user.getInfo.mock.calls.length).toEqual(1);
     });
 
-    it('Makes just one request for the data', function() {
-      // Check correct endpoint is used
+    it('Accepts a callback function', function() {
+      expect(user.getInfo).toBeCalledWith(Component.setPlayCount);
     });
   });
 
   describe('When the component is loading', function() {
-    // Manually set state to loading...
+    it('Displays a loading icon by default', function() {
+      var spinner = findByClass(Component, "TotalTracks__spinner");
 
-    it('Displays a loading icon', function() {
-      // Check DOM for loading icon
+      expect(spinner).toBeDefined();
     });
   });
 
   describe('When data is retreived', function() {
-    // Set up a dummy response
+    beforeEach(function() {
+      Component.setState({
+        loading: false,
+        playCount: 10000
+      });
+    });
 
     it('Displays an icon', function() {
       var icon = findByClass(Component, "TotalTracks__icon");
@@ -43,18 +51,17 @@ describe('TotalTrack Component', function() {
       expect(icon.getDOMNode().tagName).toBe("IMG");
     });
 
-    it('Displays a total amount of tracks', function() {
-      // Check DOM for correct amount of tracks displayed
-    });
+    it('Displays a formatted playcount', function() {
+      var playcount = findByClass(Component, "TotalTracks__playcount");
 
-    it('Formats the total tracks', function() {
-      // Set up some more test data for multiple scenarios
-
-      // Expect large numbers to be comma separated
+      expect(playcount).toBeDefined();
+      expect(playcount.getDOMNode().textContent).toBe('10,000');
     });
 
     it('Displays a label', function() {
-      // Check DOM for label
+      var label = findByClass(Component, "TotalTracks__label");
+
+      expect(label.getDOMNode().textContent).toBe('Total Tracks');
     });
   });
 });

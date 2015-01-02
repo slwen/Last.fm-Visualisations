@@ -1,8 +1,12 @@
+// DEPENDENCIES
 @import "scss/variables";
 @import "scss/mixins";
+
+// BASE STYLES
 @import "scss/type";
 @import "scss/helpers";
 
+// APP STYLES
 body {
   background: $color-slate;
   @include breakpoint(lap) { background: $color-deepPurple; }
