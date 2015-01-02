@@ -75,7 +75,7 @@
 	    return (
 	      React.createElement("div", null, 
 	        React.createElement("p", {className: "greeting"}, 
-	          "Hello there reactorz!!!1"
+	          "Hello there Alex!!!1"
 	        )
 	      )
 	    );
@@ -337,7 +337,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(8)();
-	exports.push([module.id, ".greeting{color:#fff}.greeting:before{content:\"\";display:block;width:50px;height:50px;background:url('http://placehold.it/50x50') no-repeat 0 0}", ""]);
+	exports.push([module.id, ".greeting{color:pink}.greeting:before{content:\"\";display:block;width:50px;height:50px;background:url('http://placehold.it/50x50') no-repeat 0 0}", ""]);
 
 /***/ },
 /* 8 */
