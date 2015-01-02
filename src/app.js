@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var Hello = require('./components/Hello');
+var TotalTracks = require('./components/TotalTracks');
 require("./app.scss");
 
-React.renderComponent(<Hello />, document.getElementById('content'));
+React.renderComponent(<TotalTracks />, document.getElementById('content'));

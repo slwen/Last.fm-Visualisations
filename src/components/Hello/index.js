@@ -10,7 +10,7 @@ module.exports = React.createClass({
     return (
       <div>
         <p className="greeting">
-          Hello there reactorz!!!1
+          Hello there Alex!!!1
         </p>
       </div>
     );
