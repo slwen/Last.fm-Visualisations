@@ -9,6 +9,22 @@
 // APP STYLES
 body {
   background: $color-slate;
-  @include breakpoint(lap) { background: $color-deepPurple; }
-  @include breakpoint(palm) { background: $color-hotPink; }
+  color: $color-marl;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.Application__main {
+  padding-left: 35%;
+}
+
+.Application__aside {
+  position: fixed;
+  top: 0;
+  width: 35%;
+  background: $color-slateDark;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
