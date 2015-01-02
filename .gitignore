@@ -3,3 +3,4 @@
 design_files/
 node_modules/
 src/api/credentials.json
+build/
