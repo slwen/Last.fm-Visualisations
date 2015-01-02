@@ -1,0 +1,26 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+// COMPONENT STYLES
+.TotalAlbums {
+  background: $color-slateDark;
+  padding: 30px 35px;
+  color: $color-marl;
+  border-bottom: 1px solid $color-slate;
+}
+
+.TotalAlbums__content,
+.TotalAlbums__icon {
+  display: inline-block;
+}
+
+.TotalAlbums__content {
+  padding-left: 35px;
+}
+
+.TotalAlbums__total {
+  font-weight: bold;
+}
+
+@include spinner(40px, 1s, $color-deepPurple);
