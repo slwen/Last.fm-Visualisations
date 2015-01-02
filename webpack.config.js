@@ -10,7 +10,8 @@ module.exports = {
       { test: /\.scss$/, loader: "style!css!sass" },
       { test: /\.css$/, loader: "style!css" },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
-      { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" }
+      { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" },
+      { test: /\.json$/, loader: "json" }
     ]
   },
   externals: {
