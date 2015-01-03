@@ -13,6 +13,7 @@
     "json-loader": "^0.5.1",
     "jsonp": "^0.1.0",
     "jsx-loader": "^0.12.2",
+    "moment": "^2.8.4",
     "numeral": "^1.5.3",
     "react-tools": "^0.12.2",
     "sass-loader": "^0.3.1",
