@@ -2,10 +2,11 @@
 
 require("./app.scss");
 
-var React       = require('react');
-var Profile     = require('./components/Profile');
-var TotalTracks = require('./components/TotalTracks');
-var TotalAlbums = require('./components/TotalAlbums');
+var React         = require('react');
+var Profile       = require('./components/Profile');
+var TotalTracks   = require('./components/TotalTracks');
+var TotalAlbums   = require('./components/TotalAlbums');
+var AverageTracks = require('./components/AverageTracks');
 
 var AppWrapper = React.createClass({
   render: function() {
@@ -15,6 +16,7 @@ var AppWrapper = React.createClass({
           <Profile />
           <TotalTracks />
           <TotalAlbums />
+          <AverageTracks />
         </div>
         <div className="Application__main">
           Hey bro, main content goes here
