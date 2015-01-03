@@ -24,4 +24,4 @@ var AppWrapper = React.createClass({
   }
 });
 
-React.renderComponent(<AppWrapper />, document.getElementById('app-hook'));
+React.render(<AppWrapper />, document.getElementById('app-hook'));
