@@ -3,6 +3,7 @@
 require("./app.scss");
 
 var React       = require('react');
+var Profile     = require('./components/Profile');
 var TotalTracks = require('./components/TotalTracks');
 var TotalAlbums = require('./components/TotalAlbums');
 
@@ -11,6 +12,7 @@ var AppWrapper = React.createClass({
     return (
       <div className="Application">
         <div className="Application__aside">
+          <Profile />
           <TotalTracks />
           <TotalAlbums />
         </div>

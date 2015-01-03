@@ -1,0 +1,46 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/modules/tiles";
+
+// COMPONENT STYLES
+.Profile {
+  @extend %tile;
+}
+
+.Profile__content,
+.Profile__image {
+  @extend %tile-blocks;
+  vertical-align: middle;
+}
+
+.Profile__image {
+  border-radius: 50%;
+}
+
+.Profile__content {
+  @extend %tile-content;
+}
+
+.Profile__name {
+  color: #fff;
+  font-size: $size-lg;
+}
+
+.Profile__joined {
+  font-size: $size-sm;
+}
+
+.Profile__error-msg {
+  @extend %tile-error-msg;
+}
+
+.Profile--error .Profile__error-msg {
+  @extend %tile-error-msg-show;
+}
+
+.Profile--loading > div {
+  padding: 12px 0;
+}
+
+@include spinner($size-md, 1s, $color-deepPurple);
