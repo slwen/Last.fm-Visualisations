@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: "./src/app.js",
   output: {
@@ -19,5 +21,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
+  plugins: [
+    // Ignore extra languages for moment.js
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+  ]
 };
