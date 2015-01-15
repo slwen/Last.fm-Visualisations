@@ -7,6 +7,7 @@ var Profile       = require('./components/Profile');
 var TotalTracks   = require('./components/TotalTracks');
 var TotalAlbums   = require('./components/TotalAlbums');
 var AverageTracks = require('./components/AverageTracks');
+var TotalTime     = require('./components/TotalTime');
 
 var AppWrapper = React.createClass({
   render: function() {
@@ -17,6 +18,7 @@ var AppWrapper = React.createClass({
           <TotalTracks />
           <TotalAlbums />
           <AverageTracks />
+          <TotalTime />
         </div>
         <div className="Application__main">
           Hey bro, main content goes here
