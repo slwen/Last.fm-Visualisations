@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Useful data visualisations consuming Last.fm API.",
   "dependencies": {
+    "lodash": "^2.4.1",
     "react": "^0.12.2"
   },
   "devDependencies": {

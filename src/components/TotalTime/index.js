@@ -1,22 +1,18 @@
-/*
- * TODO: Sort out this janky way of getting/storing the summed up
- *       playcounts. Not happy with how "sum" has to be passed down
- *       multiple functions.
- *
- * TODO: Assess need for numeral.js or moment.js for this component.
- *
- */
-
 "use strict";
 
 require("./style.scss");
 
 var _       = require('lodash');
 var React   = require('react');
-var numeral = require('numeral');
 var moment  = require('moment');
 var iconSrc = require('./icon.png');
 var user    = require('../../api/user');
+
+/*
+ * TODO: Sort out loading state issue; Make sure
+ *       each API call is complete before switching
+ *       to a loaded state.
+ */
 
 module.exports = React.createClass({
   displayName: 'TotalTime',
@@ -61,46 +57,38 @@ module.exports = React.createClass({
       this.setState({ error: true });
       this.loadUserTopTracks();
     } else {
-      var samplePlaycount = this.sumPlaycounts(data.toptracks.track);
-
       this.setState({
         loading: false,
         error: false,
-        userTopTracks: this.processTopTracks(data.toptracks.track, samplePlaycount)
+        userTopTracks: data.toptracks.track
       });
     }
-
-    var averageDuration = this.state.userTopTracks;
-    var estimatedTime = Math.round(averageDuration * this.state.userInfo.playcount);
-
-    var displayTime = numeral(estimatedTime).format('00:00:00');
-
-    console.log(displayTime);
   },
 
-  sumPlaycounts: function(topTracks) {
+  calculateAverageDuration: function(topTracks) {
+    var weightedDuration;
+    var averageDuration = 0;
+    var sum = this.sumPlaycounts();
+
+    _.map(topTracks, function(track) {
+      weightedDuration = this.calculateWeightedDuration(track.playcount, track.duration, sum);
+      averageDuration += weightedDuration;
+    }, this);
+
+    return averageDuration;
+  },
+
+  sumPlaycounts: function() {
     var sumPlaycount = 0;
 
-    _.forEach(topTracks, function(track) {
+    _.forEach(this.state.userTopTracks, function(track) {
       sumPlaycount += parseFloat(track.playcount);
     });
 
     return sumPlaycount;
   },
 
-  processTopTracks: function(topTracks, sum) {
-    var weightedDuration;
-    var average = 0;
-
-    _.map(topTracks, function(track) {
-      weightedDuration = this.calculateWeight(track.playcount, sum, track.duration);
-      average += weightedDuration;
-    }, this);
-
-    return average;
-  },
-
-  calculateWeight: function(playcount, sum, duration) {
+  calculateWeightedDuration: function(playcount, duration, sum) {
     var weight = playcount / sum;
     return weight * duration;
   },
@@ -119,7 +107,14 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var userInfo = this.state.userInfo;
+    var userInfo  = this.state.userInfo;
+    var topTracks = this.state.userTopTracks;
+
+    if (userInfo && topTracks) {
+      var averageDuration = this.calculateAverageDuration(topTracks);
+      var estimatedTotal  = averageDuration * userInfo.playcount;
+      var formattedTotal  = Math.round(moment.duration(estimatedTotal, 'seconds').asDays());
+    }
 
     if (this.state.error) {
       return (
@@ -142,10 +137,10 @@ module.exports = React.createClass({
         <img src={ iconSrc } className="TotalTime__icon" height="32" width="32" />
         <div className="TotalTime__content">
           <div className="TotalTime__playcount">
-            { userInfo }
+            { formattedTotal }
           </div>
           <div className="TotalTime__label">
-            Total Tracks
+            Estimated Total Days
           </div>
         </div>
       </div>

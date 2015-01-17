@@ -1,0 +1,32 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/modules/tiles";
+
+// COMPONENT STYLES
+.TotalTime {
+  @extend %tile;
+}
+
+.TotalTime__content,
+.TotalTime__icon {
+  @extend %tile-blocks;
+}
+
+.TotalTime__content {
+  @extend %tile-content;
+}
+
+.TotalTime__playcount {
+  @extend %tile-value;
+}
+
+.TotalTime__error-msg {
+  @extend %tile-error-msg;
+}
+
+.TotalTime--error .TotalTime__error-msg {
+  @extend %tile-error-msg-show;
+}
+
+@include spinner($size-md, 1s, $color-deepPurple);
