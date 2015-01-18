@@ -13,34 +13,62 @@ describe('TotalTime Component', function() {
   var TotalTime   = require(path);
   var Component;
 
-  beforeEach(function() {
-    user.getInfo.mockClear();
-    Component = TestUtils.renderIntoDocument(<TotalTime />);
-  });
+  var topTracksResponse = [
+    { playcount: 100, duration: 300 },
+    { playcount: 50, duration: 100 },
+    { playcount: 25, duration: 600 }
+  ];
 
-  describe('Collecting the users total playcount', function() {
-    it('Makes one correct request for user info', function() {
+  var userInfoResponse = { playcount: 1000 };
 
+  describe('Collecting the correct data from the last.fm API', function() {
+    beforeEach(function() {
+      user.getInfo.mockClear();
+      user.getTopTracks.mockClear();
+      Component = TestUtils.renderIntoDocument(<TotalTime />);
     });
 
-    it('Accepts a callback function', function() {
-
-    });
-  });
-
-  describe('Collecting the users top 100 tracks', function() {
     it('Makes one correct request for user top tracks', function() {
-
+      expect(user.getTopTracks.mock.calls.length).toEqual(1);
     });
 
-    it('Accepts a callback function', function() {
+    it('Accepts a callback function after loading top tracks', function() {
+      expect(user.getTopTracks).toBeCalledWith(100, Component.setUserTopTracks);
+    });
 
+    it('Makes one correct request for user info', function() {
+      Component.loadUserInfo();
+      expect(user.getInfo.mock.calls.length).toEqual(1);
+    });
+
+    it('Accepts a callback function after loading user info', function() {
+      Component.loadUserInfo();
+      expect(user.getInfo).toBeCalledWith(Component.setUserInfo);
+    });
+  });
+
+  describe('Calculating total days of playtime, based on a weighted average track length', function() {
+    beforeEach(function() {
+      Component = TestUtils.renderIntoDocument(<TotalTime />);
+      Component.setState({ userTopTracks: topTracksResponse });
+    });
+
+    it('Sums together the playcount for each of the users top tracks', function() {
+      expect(Component.sumPlaycounts()).toEqual(175);
+    });
+
+    it('Can calculate a weighted duration for each track', function() {
+      expect(Component.calculateWeightedDuration(100, 300, 175)).toEqual(171.42857142857142);
+    });
+
+    it('Adds the weighted duration of each track together', function() {
+      expect(Component.calculateAverageDuration(Component.state.userTopTracks)).toEqual(285.7142857142857);
     });
   });
 
   describe('When no data is returned', function() {
     beforeEach(function() {
-      Component.setPlayCount(null);
+      Component.setUserTopTracks(null);
     });
 
     it('Adds an error class to the container element', function() {
@@ -52,8 +80,8 @@ describe('TotalTime Component', function() {
     });
 
     it('Attempts to re-load itself', function() {
-      expect(user.getInfo).toBeCalledWith(Component.setPlayCount);
-      expect(user.getInfo.mock.calls.length > 1).toBeTruthy();
+      expect(user.getTopTracks).toBeCalledWith(100, Component.setUserTopTracks);
+      expect(user.getTopTracks.mock.calls.length > 1).toBeTruthy();
     });
   });
 
@@ -67,9 +95,12 @@ describe('TotalTime Component', function() {
 
   describe('When data is retreived', function() {
     beforeEach(function() {
+      Component = TestUtils.renderIntoDocument(<TotalTime />);
+
       Component.setState({
         loading: false,
-        playCount: 10000
+        userInfo: userInfoResponse,
+        userTopTracks: topTracksResponse
       });
     });
 
@@ -80,17 +111,17 @@ describe('TotalTime Component', function() {
       expect(icon.getDOMNode().tagName).toBe("IMG");
     });
 
-    it('Displays a formatted playcount', function() {
-      var playcount = findByClass(Component, "TotalTime__count");
+    it('Displays a formatted number of days', function() {
+      var playcount = findByClass(Component, "TotalTime__days");
 
       expect(playcount).toBeDefined();
-      expect(playcount.getDOMNode().textContent).toBe('10,000');
+      expect(playcount.getDOMNode().textContent).toBe('3');
     });
 
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalTime__label");
 
-      expect(label.getDOMNode().textContent).toBe('Total Tracks');
+      expect(label.getDOMNode().textContent).toBe('Estimated Total Days');
     });
   });
 });
