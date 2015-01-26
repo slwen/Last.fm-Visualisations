@@ -47,7 +47,7 @@ describe('TotalTime Component', function() {
     });
   });
 
-  describe('Calculating total days of playtime, based on a weighted average track length', function() {
+  describe('Calculating total hours of playtime, based on a weighted average track length', function() {
     beforeEach(function() {
       Component = TestUtils.renderIntoDocument(<TotalTime />);
       Component.setState({ userTopTracks: topTracksResponse });
@@ -111,17 +111,17 @@ describe('TotalTime Component', function() {
       expect(icon.getDOMNode().tagName).toBe("IMG");
     });
 
-    it('Displays a formatted number of days', function() {
-      var playcount = findByClass(Component, "TotalTime__days");
+    it('Displays a formatted number of hours', function() {
+      var playcount = findByClass(Component, "TotalTime__hours");
 
       expect(playcount).toBeDefined();
-      expect(playcount.getDOMNode().textContent).toBe('3');
+      expect(playcount.getDOMNode().textContent).toBe('79');
     });
 
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalTime__label");
 
-      expect(label.getDOMNode().textContent).toBe('Estimated Total Days');
+      expect(label.getDOMNode().textContent).toBe('Total Hours');
     });
   });
 });

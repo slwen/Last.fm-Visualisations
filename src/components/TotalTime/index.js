@@ -109,7 +109,7 @@ module.exports = React.createClass({
     if (userInfo && topTracks) {
       var averageDuration = this.calculateAverageDuration(topTracks);
       var estimatedTotal  = averageDuration * userInfo.playcount;
-      var formattedTotal  = Math.round(moment.duration(estimatedTotal, 'seconds').asDays());
+      var formattedTotal  = Math.round(moment.duration(estimatedTotal, 'seconds').asHours());
     }
 
     if (this.state.error) {
@@ -132,11 +132,11 @@ module.exports = React.createClass({
       <div className="TotalTime">
         <img src={ iconSrc } className="TotalTime__icon" height="32" width="32" />
         <div className="TotalTime__content">
-          <div className="TotalTime__days">
+          <div className="TotalTime__hours">
             { formattedTotal }
           </div>
           <div className="TotalTime__label">
-            Estimated Total Days
+            Total Hours
           </div>
         </div>
       </div>
