@@ -19,7 +19,7 @@ describe('TotalTime Component', function() {
     { playcount: 25, duration: 600 }
   ];
 
-  var userInfoResponse = { playcount: 1000 };
+  var userInfoResponse = { playcount: 100000 };
 
   describe('Collecting the correct data from the last.fm API', function() {
     beforeEach(function() {
@@ -108,7 +108,7 @@ describe('TotalTime Component', function() {
       var playcount = findByClass(Component, "TotalTime__hours");
 
       expect(playcount).toBeDefined();
-      expect(playcount.getDOMNode().textContent).toBe('79');
+      expect(playcount.getDOMNode().textContent).toBe('7,937');
     });
 
     it('Displays a label', function() {

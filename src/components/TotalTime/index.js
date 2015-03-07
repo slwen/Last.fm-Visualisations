@@ -2,10 +2,11 @@
 
 require("./style.scss");
 
-var _      = require('lodash');
-var React  = require('react');
-var moment = require('moment');
-var user   = require('../../api/user');
+var _       = require('lodash');
+var React   = require('react');
+var numeral = require('numeral');
+var moment  = require('moment');
+var user    = require('../../api/user');
 
 module.exports = React.createClass({
   displayName: 'TotalTime',
@@ -108,7 +109,7 @@ module.exports = React.createClass({
     if (userInfo && topTracks) {
       var averageDuration = this.calculateAverageDuration(topTracks);
       var estimatedTotal  = averageDuration * userInfo.playcount;
-      var formattedTotal  = Math.round(moment.duration(estimatedTotal, 'seconds').asHours());
+      var formattedTotal  = numeral(moment.duration(estimatedTotal, 'seconds').asHours()).format('0,0');
     }
 
     if (this.state.error) {
