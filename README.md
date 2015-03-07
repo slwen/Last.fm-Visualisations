@@ -1,7 +1,7 @@
-Last.fm Visualisations
+Last.fm App
 ======================
 
-Useful data visualisations consuming Last.fm API. Built with [webpack](https://github.com/webpack/webpack) and [react.js](https://github.com/facebook/react).
+A fun app that consumes data from the Last.fm API to display music listening stats, trends and visualisations for a user. Built with [webpack](https://github.com/webpack/webpack) and [react.js](https://github.com/facebook/react).
 
 ### Install Dependencies
 
@@ -27,3 +27,11 @@ Useful data visualisations consuming Last.fm API. Built with [webpack](https://g
 ### Export production bundle.js
 
 `npm run build`
+
+
+### Test
+
+Tests are written in [jest](https://github.com/facebook/jest).
+
+- `npm test` to run all component tests.
+- `npm test COMPONENT_NAME` to run just the test for a single component.
