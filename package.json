@@ -1,13 +1,14 @@
 {
-  "name": "lastfm-dashboard",
+  "name": "lastfm-app",
   "version": "0.0.1",
-  "description": "Useful data visualisations consuming Last.fm API.",
+  "description": "A simple web app that displays useful stats and visualisations based on data pull from the Last.fm API.",
   "dependencies": {
+    "color": "^0.7.3",
     "lodash": "^2.4.1",
-    "paths-js": "^0.3.0",
-    "react": "^0.12.2",
     "moment": "^2.8.4",
-    "numeral": "^1.5.3"
+    "numeral": "^1.5.3",
+    "paths-js": "^0.3.0",
+    "react": "^0.12.2"
   },
   "devDependencies": {
     "css-loader": "^0.9.0",
