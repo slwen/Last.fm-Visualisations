@@ -6,6 +6,7 @@ var React   = require('react');
 var numeral = require('numeral');
 var iconSrc = require('./icon.png');
 var user    = require('../../api/user');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 module.exports = React.createClass({
   displayName: 'TotalAlbums',
@@ -76,7 +77,9 @@ module.exports = React.createClass({
         <img src={ iconSrc } className="TotalAlbums__icon" height="32" width="32" />
         <div className="TotalAlbums__content">
           <div className="TotalAlbums__total">
-            { totalAlbums }
+            <ReactCSSTransitionGroup transitionName="example">
+              <div key="mykeyman">{ totalAlbums }</div>
+            </ReactCSSTransitionGroup>
           </div>
           <div className="TotalAlbums__label">
             Total Albums

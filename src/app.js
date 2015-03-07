@@ -3,6 +3,7 @@
 require("./app.scss");
 
 var React         = require('react');
+var NavBar        = require('./components/NavBar');
 var Profile       = require('./components/Profile');
 var TotalTracks   = require('./components/TotalTracks');
 var TotalAlbums   = require('./components/TotalAlbums');
@@ -13,15 +14,13 @@ var AppWrapper = React.createClass({
   render: function() {
     return (
       <div className="Application">
-        <div className="Application__aside">
+        <div className="Application__main">
+          <NavBar />
           <Profile />
           <TotalTracks />
           <TotalAlbums />
           <AverageTracks />
           <TotalTime />
-        </div>
-        <div className="Application__main">
-          Hey bro, main content goes here
         </div>
       </div>
     );

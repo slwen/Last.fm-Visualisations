@@ -4,7 +4,7 @@ require("./style.scss");
 
 var React   = require('react');
 var numeral = require('numeral');
-var moment  = require('moment');
+var moment  = require('moment'); // TODO: Consider react-intl
 var iconSrc = require('./icon.png');
 var user    = require('../../api/user');
 

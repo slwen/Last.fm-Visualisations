@@ -9,22 +9,19 @@
 // APP STYLES
 body {
   background: $color-slate;
-  color: $color-marl;
+  color: $color-slateDark;
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-.Application__main {
-  padding-left: 35%;
+.Application {
+  width: 750px;
+  max-height: 1334px;
+  overflow-y: scroll;
+  margin: 0 auto;
 }
 
-.Application__aside {
-  position: fixed;
-  top: 0;
-  width: 35%;
-  background: $color-slateDark;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+.Application__main {
+
 }
