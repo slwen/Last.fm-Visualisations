@@ -104,13 +104,6 @@ describe('TotalTime Component', function() {
       });
     });
 
-    it('Displays an icon', function() {
-      var icon = findByClass(Component, "TotalTime__icon");
-
-      expect(icon).toBeDefined();
-      expect(icon.getDOMNode().tagName).toBe("IMG");
-    });
-
     it('Displays a formatted number of hours', function() {
       var playcount = findByClass(Component, "TotalTime__hours");
 
@@ -121,7 +114,7 @@ describe('TotalTime Component', function() {
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalTime__label");
 
-      expect(label.getDOMNode().textContent).toBe('Total Hours');
+      expect(label.getDOMNode().textContent).toBe('Hours Spent');
     });
   });
 });

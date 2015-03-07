@@ -21,6 +21,10 @@
   @extend %tile-value;
 }
 
+.TotalTime__label {
+  @extend %tile-label;
+}
+
 .TotalTime__error-msg {
   @extend %tile-error-msg;
 }

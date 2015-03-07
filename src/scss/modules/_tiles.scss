@@ -1,8 +1,21 @@
 %tile {
+  box-sizing: border-box;
   background: #fff;
-  padding: $unit-lg $unit-xl;
+  position: relative;
   color: $color-slate;
-  border-bottom: 1px solid $color-slate;
+  border-bottom: 1px solid $color-mutedPurple;
+  width: 50%;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  // counts overview heading as child, thus even
+  &:nth-child(even) {
+    border-right: 1px solid $color-mutedPurple;
+  }
 }
 
 %tile-blocks {
@@ -10,11 +23,25 @@
 }
 
 %tile-content {
-  padding-left: $unit-xl;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 %tile-value {
-  font-weight: bold;
+  font-size: $size-xl;
+  font-weight: 200;
+}
+
+%tile-label {
+  font-size: $size-sm;
 }
 
 %tile-error-msg {

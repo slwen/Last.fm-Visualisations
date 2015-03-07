@@ -5,7 +5,6 @@ require("./style.scss");
 var React   = require('react');
 var numeral = require('numeral');
 var moment  = require('moment'); // TODO: Consider react-intl
-var iconSrc = require('./icon.png');
 var user    = require('../../api/user');
 
 module.exports = React.createClass({
@@ -80,7 +79,6 @@ module.exports = React.createClass({
 
     return (
       <div className="AverageTracks">
-        <img src={ iconSrc } className="AverageTracks__icon" height="32" width="32" />
         <div className="AverageTracks__content">
           <div className="AverageTracks__count">
             { this.state.average }

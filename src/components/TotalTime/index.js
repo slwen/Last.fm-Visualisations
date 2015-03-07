@@ -2,11 +2,10 @@
 
 require("./style.scss");
 
-var _       = require('lodash');
-var React   = require('react');
-var moment  = require('moment');
-var iconSrc = require('./icon.png');
-var user    = require('../../api/user');
+var _      = require('lodash');
+var React  = require('react');
+var moment = require('moment');
+var user   = require('../../api/user');
 
 module.exports = React.createClass({
   displayName: 'TotalTime',
@@ -130,13 +129,12 @@ module.exports = React.createClass({
 
     return (
       <div className="TotalTime">
-        <img src={ iconSrc } className="TotalTime__icon" height="32" width="32" />
         <div className="TotalTime__content">
           <div className="TotalTime__hours">
             { formattedTotal }
           </div>
           <div className="TotalTime__label">
-            Total Hours
+            Hours Spent
           </div>
         </div>
       </div>

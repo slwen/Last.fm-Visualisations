@@ -1,0 +1,25 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/type";
+
+.Overview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Overview__head {
+  width: 100%;
+  background: #fff;
+  padding: $unit-md;
+  text-align: center;
+  border-bottom: 1px solid $color-mutedPurple;
+}
+
+.Overview__title {
+  @extend %title;
+}
+
+.Overview__subtitle {
+  @extend %subtitle;
+  color: $color-slate;
+}

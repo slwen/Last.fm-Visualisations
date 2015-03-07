@@ -21,6 +21,10 @@
   @extend %tile-value;
 }
 
+.TotalAlbums__label {
+  @extend %tile-label;
+}
+
 .TotalAlbums__error-msg {
   @extend %tile-error-msg;
 }

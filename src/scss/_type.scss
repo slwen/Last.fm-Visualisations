@@ -4,15 +4,27 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 { font-weight: normal; }
 
-h1 {
+h1, .h1 {
   font-size: $size-xl;
   line-height: 1;
 }
 
-h2 { font-size: $size-lg; }
-h3 { font-size: $size-md; }
-h4 { font-size: $size-sm; }
-h5 { font-size: $size-xs; }
-h6 { font-size: $size-xs; }
+h2, .h2 { font-size: $size-lg; }
+h3, .h3 { font-size: $size-md; }
+h4, .h4 { font-size: $size-sm; }
+h5, .h5 { font-size: $size-xs; }
+h6, .h5 { font-size: $size-xs; }
+
+%title {
+  font-size: $size-md;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+%subtitle {
+  font-size: $size-xs;
+  text-transform: uppercase;
+}

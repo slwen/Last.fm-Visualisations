@@ -63,13 +63,6 @@ describe('TotalTrack Component', function() {
       });
     });
 
-    it('Displays an icon', function() {
-      var icon = findByClass(Component, "TotalAlbums__icon");
-
-      expect(icon).toBeDefined();
-      expect(icon.getDOMNode().tagName).toBe("IMG");
-    });
-
     it('Displays a formatted TotalAlbums', function() {
       var TotalAlbums = findByClass(Component, "TotalAlbums__total");
 

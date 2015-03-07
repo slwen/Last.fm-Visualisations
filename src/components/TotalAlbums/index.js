@@ -4,7 +4,6 @@ require("./style.scss");
 
 var React   = require('react');
 var numeral = require('numeral');
-var iconSrc = require('./icon.png');
 var user    = require('../../api/user');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -74,7 +73,6 @@ module.exports = React.createClass({
 
     return (
       <div className="TotalAlbums">
-        <img src={ iconSrc } className="TotalAlbums__icon" height="32" width="32" />
         <div className="TotalAlbums__content">
           <div className="TotalAlbums__total">
             <ReactCSSTransitionGroup transitionName="example">

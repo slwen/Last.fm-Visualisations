@@ -63,13 +63,6 @@ describe('TotalTrack Component', function() {
       });
     });
 
-    it('Displays an icon', function() {
-      var icon = findByClass(Component, "TotalTracks__icon");
-
-      expect(icon).toBeDefined();
-      expect(icon.getDOMNode().tagName).toBe("IMG");
-    });
-
     it('Displays a formatted playcount', function() {
       var playcount = findByClass(Component, "TotalTracks__playcount");
 

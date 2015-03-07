@@ -63,13 +63,6 @@ describe('AverageTracks Component', function() {
       });
     });
 
-    it('Displays an icon', function() {
-      var icon = findByClass(Component, "AverageTracks__icon");
-
-      expect(icon).toBeDefined();
-      expect(icon.getDOMNode().tagName).toBe("IMG");
-    });
-
     it('Displays a formatted daily average count', function() {
       var count = findByClass(Component, "AverageTracks__count");
 
