@@ -1,0 +1,38 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/helpers";
+
+.NavBar {
+  background: $color-deepPurple;
+  display: flex;
+  align-items: center;
+  padding: $unit-sm;
+}
+
+%NavBar__icon {
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 48px;
+  width: 48px;
+}
+
+.NavBar__menu-btn {
+  @extend %NavBar__icon;
+  background-image: url('./icon-menu@2x.png');
+  background-size: 20px 15px;
+}
+
+.NavBar__settings-btn {
+  @extend %NavBar__icon;
+  background-image: url('./icon-settings@2x.png');
+  background-size: 21px;
+}
+
+.NavBar__title {
+  color: #fff;
+  padding: 0 $unit-sm;
+  text-align: center;
+  flex: 2 1 auto;
+  font-size: $unit-md;
+}

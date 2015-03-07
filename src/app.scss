@@ -10,14 +10,14 @@
 body {
   background: $color-slate;
   color: $color-slateDark;
-  padding: 0;
+  padding: 40px;
   margin: 0;
   height: 100%;
 }
 
 .Application {
-  width: 750px;
-  max-height: 1334px;
+  width: 375px;
+  max-height: 667px;
   overflow-y: scroll;
   margin: 0 auto;
 }
