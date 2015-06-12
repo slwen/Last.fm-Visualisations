@@ -2,11 +2,12 @@
 
 require("./style.scss");
 
-var React = require('react');
-var TotalTracks   = require('../TotalTracks');
-var TotalAlbums   = require('../TotalAlbums');
-var AverageTracks = require('../AverageTracks');
-var TotalTime     = require('../TotalTime');
+var React             = require('react');
+var TracksPlayedGraph = require('../TracksPlayedGraph');
+var TotalTracks       = require('../TotalTracks');
+var TotalAlbums       = require('../TotalAlbums');
+var AverageTracks     = require('../AverageTracks');
+var TotalTime         = require('../TotalTime');
 
 module.exports = React.createClass({
   displayName: 'Overview',
@@ -15,9 +16,10 @@ module.exports = React.createClass({
     return (
       <div className="Overview">
         <div className="Overview__head">
-          <div className="Overview__title">Overview</div>
-          <div className="Overview__subtitle">You Joined 5th May, 2011</div>
+          <div className="Overview__title">Tracks Played</div>
+          <div className="Overview__subtitle">Last 30 Days</div>
         </div>
+        <TracksPlayedGraph />
         <TotalTracks />
         <TotalAlbums />
         <TotalTime />

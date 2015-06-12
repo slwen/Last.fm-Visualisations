@@ -51,7 +51,7 @@ module.exports = React.createClass({
     var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
 
     return (
-      <div>
+      <div className="TotalTime__content">
         <div className="AverageTracks__spinner spinner"></div>
         <div className="AverageTracks__error-msg">
           { error }

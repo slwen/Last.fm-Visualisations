@@ -6,7 +6,7 @@ var React    = require('react');
 var NavBar   = require('./components/NavBar');
 var Overview = require('./components/Overview');
 
-var AppWrapper = React.createClass({
+var App = React.createClass({
   render: function() {
     return (
       <div className="Application">
@@ -19,4 +19,4 @@ var AppWrapper = React.createClass({
   }
 });
 
-React.render(<AppWrapper />, document.getElementById('app-hook'));
+React.render(<App />, document.getElementById('app-hook'));

@@ -9,17 +9,17 @@
 
 .Overview__head {
   width: 100%;
-  background: #fff;
+  background: $color-deepPurple;
   padding: $unit-md;
   text-align: center;
-  border-bottom: 1px solid $color-mutedPurple;
 }
 
 .Overview__title {
   @extend %title;
+  color: #fff;
 }
 
 .Overview__subtitle {
   @extend %subtitle;
-  color: $color-slate;
+  color: $color-lightPurple;
 }
