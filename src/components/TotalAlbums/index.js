@@ -80,7 +80,7 @@ module.exports = React.createClass({
             </ReactCSSTransitionGroup>
           </div>
           <div className="TotalAlbums__label">
-            Total Albums
+            Albums Played
           </div>
         </div>
       </div>

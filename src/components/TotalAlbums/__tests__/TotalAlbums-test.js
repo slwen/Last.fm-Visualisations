@@ -50,7 +50,6 @@ describe('TotalTrack Component', function() {
   describe('When the component is loading', function() {
     it('Displays a loading icon by default', function() {
       var spinner = findByClass(Component, "TotalAlbums__spinner");
-
       expect(spinner).toBeDefined();
     });
   });
@@ -65,15 +64,13 @@ describe('TotalTrack Component', function() {
 
     it('Displays a formatted TotalAlbums', function() {
       var TotalAlbums = findByClass(Component, "TotalAlbums__total");
-
       expect(TotalAlbums).toBeDefined();
       expect(TotalAlbums.getDOMNode().textContent).toBe('10,000');
     });
 
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalAlbums__label");
-
-      expect(label.getDOMNode().textContent).toBe('Total Albums');
+      expect(label.getDOMNode().textContent).toBe('Albums Played');
     });
   });
 });

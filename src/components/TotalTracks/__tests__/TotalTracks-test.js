@@ -50,7 +50,6 @@ describe('TotalTrack Component', function() {
   describe('When the component is loading', function() {
     it('Displays a loading icon by default', function() {
       var spinner = findByClass(Component, "TotalTracks__spinner");
-
       expect(spinner).toBeDefined();
     });
   });
@@ -72,8 +71,7 @@ describe('TotalTrack Component', function() {
 
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalTracks__label");
-
-      expect(label.getDOMNode().textContent).toBe('Total Tracks');
+      expect(label.getDOMNode().textContent).toBe('Tracks Played');
     });
   });
 });

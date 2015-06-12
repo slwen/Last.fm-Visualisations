@@ -76,7 +76,7 @@ module.exports = React.createClass({
             { playCount }
           </div>
           <div className="TotalTracks__label">
-            Total Tracks
+            Tracks Played
           </div>
         </div>
       </div>

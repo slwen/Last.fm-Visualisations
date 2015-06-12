@@ -50,7 +50,6 @@ describe('AverageTracks Component', function() {
   describe('When the component is loading', function() {
     it('Displays a loading icon by default', function() {
       var spinner = findByClass(Component, "AverageTracks__spinner");
-
       expect(spinner).toBeDefined();
     });
   });
@@ -72,8 +71,7 @@ describe('AverageTracks Component', function() {
 
     it('Displays a label', function() {
       var label = findByClass(Component, "AverageTracks__label");
-
-      expect(label.getDOMNode().textContent).toBe('Daily Average Tracks');
+      expect(label.getDOMNode().textContent).toBe('Avg. Tracks/Day');
     });
   });
 });

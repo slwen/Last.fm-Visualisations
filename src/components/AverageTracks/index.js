@@ -84,7 +84,7 @@ module.exports = React.createClass({
             { this.state.average }
           </div>
           <div className="AverageTracks__label">
-            Daily Average Tracks
+            Avg. Tracks/Day
           </div>
         </div>
       </div>
