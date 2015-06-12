@@ -55,13 +55,23 @@ module.exports = React.createClass({
 
   renderLines: function() {
     return _.map(stock.curves, function(d, i) {
-      return <path className="TracksPlayedGraph__line" d={ d.line.path.print() } />;
+      return (
+        <path
+          key={ "line-" + i }
+          className="TracksPlayedGraph__line"
+          d={ d.line.path.print() } />
+      );
     });
   },
 
   renderAreas: function() {
     return _.map(stock.curves, function(d, i) {
-      return <path className="TracksPlayedGraph__area" d={ d.area.path.print() } />;
+      return (
+        <path
+          key={ "area-" + i }
+          className="TracksPlayedGraph__area"
+          d={ d.area.path.print() } />
+      );
     });
   },
 
