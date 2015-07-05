@@ -11,7 +11,7 @@ module.exports = {
     loaders: [
       { test: /\.scss$/, loader: "style!css!sass" },
       { test: /\.css$/, loader: "style!css" },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+      { test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=8192' },
       { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" },
       { test: /\.json$/, loader: "json" }
     ]
