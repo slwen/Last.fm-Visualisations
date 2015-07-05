@@ -10,9 +10,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="NavBar">
-        <div className="NavBar__menu-btn"></div>
         <div className="NavBar__title">Dashboard</div>
-        <div className="NavBar__settings-btn"></div>
       </div>
     );
   }

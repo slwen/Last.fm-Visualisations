@@ -1,0 +1,29 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+
+.TabBarButton {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.TabBarButton__icon {
+  height: 30px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    display: block;
+    width: 22px;
+  }
+}
+
+.TabBarButton__label {
+  font-size: $size-xxs;
+  color: $color-slate;
+}

@@ -1,0 +1,11 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+
+.TabBar {
+  background: #fff;
+  display: flex;
+  width: 100%;
+  height: 51px;
+  border-top: 1px solid $color-mutedPurple;
+  line-height: 1;
+}

@@ -5,6 +5,7 @@ require("./style.scss");
 var React   = require('react');
 var numeral = require('numeral');
 var user    = require('../../api/user');
+var icon    = require("./icon.svg");
 
 module.exports = React.createClass({
   displayName: 'TotalTracks',
@@ -72,6 +73,9 @@ module.exports = React.createClass({
     return (
       <div className="TotalTracks">
         <div className="TotalTracks__content">
+          <div className="TotalTracks__icon">
+            <img src={ icon } />
+          </div>
           <div className="TotalTracks__playcount">
             { playCount }
           </div>

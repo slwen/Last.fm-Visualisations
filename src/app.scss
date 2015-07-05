@@ -17,11 +17,17 @@ body {
 
 .Application {
   width: 375px;
-  max-height: 667px;
+  height: 667px;
   overflow-y: scroll;
   margin: 0 auto;
+  background: #eee; // Temp
 }
 
 .Application__main {
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 545px;
 }
