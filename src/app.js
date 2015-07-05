@@ -2,23 +2,29 @@
 
 require("./app.scss");
 
-var React       = require('react');
-var TabBar      = require('./components/TabBar');
-var NavBar      = require('./components/NavBar');
-var TotalTracks = require('./components/TotalTracks');
+var React        = require('react');
+var Router       = require('react-router');
+var RouteHandler = Router.RouteHandler;
+var DefaultRoute = Router.DefaultRoute;
+var Route        = Router.Route;
+
+var Leaderboard = require('./pages/Leaderboard');
+var Dashboard   = require('./pages/Dashboard');
 
 var App = React.createClass({
   render: function() {
-    return (
-      <div className="Application">
-        <NavBar />
-        <div className="Application__main">
-          <TotalTracks />
-        </div>
-        <TabBar />
-      </div>
-    );
+    return <RouteHandler />;
   }
 });
 
-React.render(<App />, document.getElementById('app-hook'));
+var routes = (
+  <Route handler={ App }>
+    <DefaultRoute handler={ Dashboard }/>
+    <Route path="dashboard" handler={ Dashboard } />
+    <Route path="leaderboard" handler={ Leaderboard } />
+  </Route>
+);
+
+Router.run(routes, Router.HashLocation, function(Root) {
+  React.render(<Root/>, document.body);
+});

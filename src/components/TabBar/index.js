@@ -4,7 +4,7 @@ require("./style.scss");
 
 var _               = require('lodash');
 var React           = require('react');
-var TabBarButton    = require('../TabBarButton')
+var TabBarButton    = require('../TabBarButton');
 var iconCompare     = require("./icon--compare.svg");
 var iconDashboard   = require("./icon--dashboard.svg");
 var iconLeaderboard = require("./icon--leaderboard.svg");
