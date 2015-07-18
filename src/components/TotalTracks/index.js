@@ -39,14 +39,9 @@ module.exports = React.createClass({
   },
 
   renderLoadingState: function() {
-    var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
-
     return (
       <div className="TotalTime__content">
         <div className="TotalTracks__spinner spinner"></div>
-        <div className="TotalTracks__error-msg">
-          { error }
-        </div>
       </div>
     );
   },
@@ -57,7 +52,7 @@ module.exports = React.createClass({
     if (this.state.error) {
       return (
         <div className="TotalTracks TotalTracks--loading TotalTracks--error">
-          { this.renderLoadingState() }
+          <div className="TotalTracks__error-msg">Error...</div>
         </div>
       );
     }

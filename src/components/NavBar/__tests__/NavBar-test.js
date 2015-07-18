@@ -21,18 +21,4 @@ describe('NavBar Component', function() {
       expect(title).toBeDefined();
     });
   });
-
-  describe('The NavBar menu button', function() {
-    it('Displays a menu button', function() {
-      var menuBtn = findByClass(Component, "NavBar__menu-btn");
-      expect(menuBtn).toBeDefined();
-    });
-  });
-
-  describe('The NavBar settings button', function() {
-    it('Displays a settings button', function() {
-      var settingsBtn = findByClass(Component, "NavBar__settings-btn");
-      expect(settingsBtn).toBeDefined();
-    });
-  });
 });
