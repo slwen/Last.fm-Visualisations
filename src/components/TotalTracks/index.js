@@ -14,7 +14,7 @@ module.exports = React.createClass({
     return {
       loading: true,
       playCount: 0
-    }
+    };
   },
 
   componentWillMount: function() {

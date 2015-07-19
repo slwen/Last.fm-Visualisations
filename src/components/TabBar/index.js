@@ -42,7 +42,7 @@ module.exports = React.createClass({
           link: "placeholder"
         }
       ]
-    }
+    };
   },
 
   renderTabBarButtons: function() {

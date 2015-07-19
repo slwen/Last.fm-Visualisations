@@ -8,12 +8,33 @@ module.exports = {
     publicPath: 'http://localhost:8090/assets'
   },
   module: {
+    postLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "jshint-loader"
+      }
+    ],
     loaders: [
-      { test: /\.scss$/, loader: "style!css!sass" },
-      { test: /\.css$/, loader: "style!css" },
-      { test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=8192' },
-      { test: /\.js$/, loader: "jsx-loader?insertPragma=React.DOM&harmony" },
-      { test: /\.json$/, loader: "json" }
+      {
+        test: /\.scss$/,
+        loader: "style!css!sass"
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version'
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'url-loader?limit=8192'
+      },
+      {
+        test: /\.js$/,
+        loader: "jsx-loader?insertPragma=React.DOM&harmony"
+      },
+      {
+        test: /\.json$/, loader: "json"
+      }
     ]
   },
   externals: {
@@ -23,7 +44,6 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    // Ignore extra languages for moment.js
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/) // Ignore extra languages for moment.js
   ]
 };

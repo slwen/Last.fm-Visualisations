@@ -13,7 +13,7 @@ module.exports = React.createClass({
     return {
       loading: true,
       profileData: {}
-    }
+    };
   },
 
   componentWillMount: function() {
@@ -42,11 +42,11 @@ module.exports = React.createClass({
       joinDate: moment(user.registered["#text"], 'YYYY-MM-DD HH:mm').format('MMM Do, YYYY'),
       imageUrl: user.image[3]['#text'],
       name: user.name
-    }
+    };
   },
 
   renderLoadingState: function() {
-    var error = "We're still trying to load your face, Last.fm doesn't want to hand it over just yet..."
+    var error = "We're still trying to load your face, Last.fm doesn't want to hand it over just yet...";
 
     return (
       <div>
