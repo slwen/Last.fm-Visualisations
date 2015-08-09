@@ -9,7 +9,9 @@ describe('TabBar Component', function() {
   var TestUtils   = React.addons.TestUtils;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
   var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
+  var mockRouter  = require('../../../../test/helpers/mockRouter');
   var TabBar      = require(path);
+  var Subject;
   var Component;
 
   var mockData = [
@@ -18,7 +20,8 @@ describe('TabBar Component', function() {
   ];
 
   beforeEach(function() {
-    Component = TestUtils.renderIntoDocument(<TabBar menuItems={ mockData } />);
+    Subject = mockRouter(TabBar, { menuItems: mockData });
+    Component = TestUtils.renderIntoDocument(<Subject />);
   });
 
   it('Renders a tab bar container element', function() {
