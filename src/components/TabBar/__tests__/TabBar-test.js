@@ -4,7 +4,7 @@ var path = '../';
 
 jest.autoMockOff();
 
-describe('TabBar Component', function() {
+describe('TabBar component', function() {
   var React       = require('react/addons');
   var TestUtils   = React.addons.TestUtils;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
@@ -24,12 +24,12 @@ describe('TabBar Component', function() {
     Component = TestUtils.renderIntoDocument(<Subject />);
   });
 
-  it('Renders a tab bar container element', function() {
+  it('renders a tab bar container element', function() {
     var container = findByClass(Component, "TabBar");
     expect(container).toBeDefined();
   });
 
-  it('Renders tab bar menu items', function() {
+  it('renders tab bar menu items', function() {
     var tabs = scryByClass(Component, "TabBarButton");
     expect(tabs.length).toBe(2);
   });

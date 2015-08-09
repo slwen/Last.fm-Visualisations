@@ -4,7 +4,7 @@ var path = '../';
 
 jest.autoMockOff();
 
-describe('TabBarButton Component', function() {
+describe('TabBarButton component', function() {
   var React        = require('react/addons');
   var TestUtils    = React.addons.TestUtils;
   var findByClass  = TestUtils.findRenderedDOMComponentWithClass;
@@ -13,7 +13,6 @@ describe('TabBarButton Component', function() {
   var TabBarButton = require(path);
   var Subject;
   var Component;
-
 
   beforeEach(function() {
     Subject = mockRouter(TabBarButton, { name: "foo", icon: "bar", link: "baz" });
