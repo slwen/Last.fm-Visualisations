@@ -33,7 +33,7 @@ describe('TotalTime Component', function() {
     });
 
     it('Accepts a callback function after loading top tracks', function() {
-      expect(user.getTopTracks).toBeCalledWith(100, Component.setUserTopTracks);
+      expect(user.getTopTracks).toBeCalledWith(100, "overall", Component.setUserTopTracks);
     });
 
     it('Makes one correct request for user info', function() {
@@ -80,7 +80,7 @@ describe('TotalTime Component', function() {
     });
 
     it('Attempts to re-load itself', function() {
-      expect(user.getTopTracks).toBeCalledWith(100, Component.setUserTopTracks);
+      expect(user.getTopTracks).toBeCalledWith(100, "overall", Component.setUserTopTracks);
       expect(user.getTopTracks.mock.calls.length > 1).toBeTruthy();
     });
   });

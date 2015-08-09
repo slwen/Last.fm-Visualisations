@@ -25,7 +25,7 @@ module.exports = React.createClass({
   },
 
   loadUserTopTracks: function() {
-    user.getTopTracks(100, this.setUserTopTracks);
+    user.getTopTracks(100, "overall", this.setUserTopTracks);
   },
 
   setUserTopTracks: function(data) {

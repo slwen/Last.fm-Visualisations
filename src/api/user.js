@@ -11,24 +11,22 @@ var routes = {
   getRecentTracks: baseUrl + "&method=user.getrecenttracks"
 };
 
-module.exports = {
-  getInfo: function(callback) {
-    var route = routes.getInfo;
-    return getJSONP(route, callback);
-  },
+exports.getInfo = function(callback) {
+  var route = routes.getInfo;
+  return getJSONP(route, callback);
+};
 
-  getTopAlbums: function(limit, callback) {
-    var route = routes.getTopAlbums + "&limit=" + limit;
-    return getJSONP(route, callback);
-  },
+exports.getTopAlbums = function(limit, callback) {
+  var route = routes.getTopAlbums + "&limit=" + limit;
+  return getJSONP(route, callback);
+};
 
-  getTopTracks: function(limit, callback) {
-    var route = routes.getTopTracks + "&limit=" + limit;
-    return getJSONP(route, callback);
-  },
+exports.getTopTracks = function(limit, period, callback) {
+  var route = routes.getTopTracks + "&limit=" + limit + "&period=" + period;
+  return getJSONP(route, callback);
+};
 
-  getRecentTracks: function(limit, startDate, endDate, page, callback) {
-    var route = routes.getRecentTracks + "&limit=" + limit + "&from=" + startDate + "&to=" + endDate + "&page=" + page;
-    return getJSONP(route, callback);
-  }
+exports.getRecentTracks = function(limit, startDate, endDate, page, callback) {
+  var route = routes.getRecentTracks + "&limit=" + limit + "&from=" + startDate + "&to=" + endDate + "&page=" + page;
+  return getJSONP(route, callback);
 };
