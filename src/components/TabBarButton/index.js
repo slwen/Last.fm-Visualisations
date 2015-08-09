@@ -3,6 +3,7 @@
 require("./style.scss");
 
 var React = require('react');
+var Link  = require('react-router').Link;
 
 module.exports = React.createClass({
   displayName: 'TabBarButton',
@@ -14,14 +15,14 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="TabBarButton">
+      <Link to={ this.props.link } className="TabBarButton">
         <div className="TabBarButton__icon">
           <img src={ this.props.icon } />
         </div>
         <div className="TabBarButton__label">
           { this.props.name }
         </div>
-      </div>
+      </Link>
     );
   }
 });

@@ -24,22 +24,22 @@ module.exports = React.createClass({
         {
           name: "Dashboard",
           icon: iconDashboard,
-          link: "placeholder"
+          link: "dashboard"
         },
         {
           name: "Leaderboard",
           icon: iconLeaderboard,
-          link: "placeholder"
+          link: "leaderboard"
         },
         {
           name: "Compare",
           icon: iconCompare,
-          link: "placeholder"
+          link: "leaderboard"
         },
         {
           name: "Settings",
           icon: iconSettings,
-          link: "placeholder"
+          link: "leaderboard"
         }
       ]
     };

@@ -20,8 +20,8 @@ var App = React.createClass({
 var routes = (
   <Route handler={ App }>
     <DefaultRoute handler={ Dashboard }/>
-    <Route path="dashboard" handler={ Dashboard } />
-    <Route path="leaderboard" handler={ Leaderboard } />
+    <Route name="dashboard" path="dashboard" handler={ Dashboard } />
+    <Route name="leaderboard" path="leaderboard" handler={ Leaderboard } />
   </Route>
 );
 

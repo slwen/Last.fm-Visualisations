@@ -14,12 +14,21 @@ describe('TabBarButton Component', function() {
 
   beforeEach(function() {
     Component = TestUtils.renderIntoDocument(<TabBarButton name="foo" icon="bar" link="baz" />);
+    Component.contextTypes = {
+      router: function() {
+        return {
+          transitionTo: jest.genMockFunction()
+        };
+      }
+    };
   });
 
   describe('The elements that make up a TabBarButton', function() {
     it('Has a container element', function() {
       var container = findByClass(Component, "TabBarButton");
       expect(container).toBeDefined();
+      expect(container.getDOMNode().tagName).toBe('A');
+      expect(container.getDOMNode().getAttribute('href')).toBeDefined();
     });
 
     it('Displays an icon', function() {
