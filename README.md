@@ -1,13 +1,20 @@
 Last.fm App
 ======================
 
-A fun app that consumes data from the Last.fm API to display music listening stats, trends and visualisations for a user. Built with [webpack](https://github.com/webpack/webpack) and [react.js](https://github.com/facebook/react).
+A fun app that consumes data from the Last.fm API to display music listening stats, trends and visualisations for a user. Built with [Webpack](https://github.com/webpack/webpack) and [React](https://github.com/facebook/react).
 
-### Install Dependencies
+### Requirements
 
-`npm install webpack -g`
+- [Node.js](https://nodejs.org/en/) (v0.10.x)
 
-`npm install`
+### Setup
+
+```sh
+$ git clone https://github.com/slwen/lastfm-app.git
+$ cd lastfm-app
+$ npm install webpack -g
+$ npm install
+```
 
 ### Run Dev
 
@@ -27,7 +34,6 @@ A fun app that consumes data from the Last.fm API to display music listening sta
 ### Export production bundle.js
 
 `npm run build`
-
 
 ### Test
 
