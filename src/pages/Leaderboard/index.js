@@ -1,19 +1,19 @@
 "use strict";
 
-var React   = require('react');
-var TabBar  = require('../../components/TabBar');
-var NavBar  = require('../../components/NavBar');
-var Profile = require('../../components/Profile');
+var React       = require('react');
+var TabBar      = require('../../components/TabBar');
+var NavBar      = require('../../components/NavBar');
+var Leaderboard = require('../../components/Leaderboard');
 
 module.exports = React.createClass({
-  displayName: 'Leaderboard',
+  displayName: 'LeaderboardPage',
 
   render: function() {
     return (
       <div className="Application">
         <NavBar />
         <div className="Application__main">
-          <Profile />
+          <Leaderboard />
         </div>
         <TabBar />
       </div>

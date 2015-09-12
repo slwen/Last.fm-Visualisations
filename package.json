@@ -5,7 +5,7 @@
   "dependencies": {
     "color": "^0.7.3",
     "jsonp": "^0.1.0",
-    "lodash": "^2.4.1",
+    "lodash": "^3.10.1",
     "moment": "^2.8.4",
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",

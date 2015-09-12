@@ -6,7 +6,7 @@ var NavBar      = require('../../components/NavBar');
 var TotalTracks = require('../../components/TotalTracks');
 
 module.exports = React.createClass({
-  displayName: 'Dashboard',
+  displayName: 'DashboardPage',
 
   render: function() {
     return (
