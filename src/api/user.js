@@ -21,7 +21,7 @@ var formatUrl = function(params) {
 
 exports.getInfo = function(callback) {
   var route = routes.getInfo;
-  return getJSONP(route, callback);
+  return getJSONP(routes.getInfo, callback);
 };
 
 exports.getTopArtists = function(params, callback) {
@@ -29,8 +29,8 @@ exports.getTopArtists = function(params, callback) {
   return getJSONP(route, callback);
 };
 
-exports.getTopAlbums = function(limit, callback) {
-  var route = routes.getTopAlbums + "&limit=" + limit;
+exports.getTopAlbums = function(params, callback) {
+  var route = routes.getTopAlbums + formatUrl(params);
   return getJSONP(route, callback);
 };
 
@@ -39,7 +39,7 @@ exports.getTopTracks = function(params, callback) {
   return getJSONP(route, callback);
 };
 
-exports.getRecentTracks = function(limit, startDate, endDate, page, callback) {
-  var route = routes.getRecentTracks + "&limit=" + limit + "&from=" + startDate + "&to=" + endDate + "&page=" + page;
+exports.getRecentTracks = function(params, callback) {
+  var route = routes.getRecentTracks + formatUrl(params);
   return getJSONP(route, callback);
 };
