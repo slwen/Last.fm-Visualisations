@@ -1,7 +1,7 @@
 Last.fm App
 ======================
 
-A fun app that consumes data from the Last.fm API to display music listening stats, trends and visualisations for a user. Built with [Webpack](https://github.com/webpack/webpack) and [React](https://github.com/facebook/react).
+A single page app that consumes data from the Last.fm API to display music listening stats. Built with [Webpack](https://github.com/webpack/webpack) and [React](https://github.com/facebook/react).
 
 ### Requirements
 

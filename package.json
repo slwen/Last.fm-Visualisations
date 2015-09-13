@@ -1,7 +1,14 @@
 {
   "name": "lastfm-app",
   "version": "0.0.1",
-  "description": "A simple web app that displays useful stats and visualisations based on data pull from the Last.fm API.",
+  "description": "A single page app that displays stats pulled from the Last.fm API.",
+  "devEngines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slwen/lastfm-app.git"
+  },
   "dependencies": {
     "color": "^0.7.3",
     "jsonp": "^0.1.0",
