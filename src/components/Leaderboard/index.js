@@ -32,22 +32,33 @@ module.exports = React.createClass({
   },
 
   loadItems: function() {
+    var type = this.props.type;
     var params = {
-      type: this.props.type,
+      limit: 10,
       period: this.props.period
     };
 
-    // TODO: Check `type` prop and make the correct API call
+    if (type === 'artists') {
+      user.getTopArtists(params, this.setItems);
+    }
 
-    // user.getTopAlbums(1, this.setItems);
-    // user.getTopTracks(1, this.setItems);
-    user.getTopArtists(params, this.setItems);
+    if (type === 'albums') {
+      user.getTopAlbums(1, this.setItems);
+    }
+
+    if (type === 'tracks') {
+      user.getTopTracks(params, this.setItems);
+    }
   },
 
   setItems: function(data) {
-    this.setState({
-      items: data
-    });
+    var type = this.props.type;
+
+    if (type === 'artists') data = data.topartists.artist;
+    if (type === 'albums') data = data.topalbums.album;
+    if (type === 'tracks') data = data.toptracks.track;
+
+    this.setState({ items: data });
   },
 
   renderEmptyState: function() {
@@ -62,11 +73,10 @@ module.exports = React.createClass({
     return map(this.state.items, function(item, i) {
       return (
         <LeaderboardItem
-          artist={ 'foo' }
-          playCount={ 2 }
-          imgUrl={ 'bar' }
-          track={ 'baz' }
-          album={ 'banana' }
+          title={ item.name }
+          subtitle={ 'blah' }
+          playCount={ item.playcount }
+          imgUrl={ item.image[1]['#text'] }
           key={ i } />
       );
     });
@@ -80,6 +90,8 @@ module.exports = React.createClass({
         </div>
       );
     }
+
+    // TODO: Add a loading state
 
     return (
       <div className="Leaderboard Leaderboard--empty">

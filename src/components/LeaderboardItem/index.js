@@ -7,17 +7,17 @@ var React = require('react');
 module.exports = React.createClass({
   displayName: 'LeaderboardItem',
   propTypes: {
-    artist: React.PropTypes.string.isRequired,
-    playCount: React.PropTypes.number.isRequired,
-    imgUrl: React.PropTypes.string.isRequired,
-    track: React.PropTypes.string,
-    album: React.PropTypes.string,
+    title: React.PropTypes.string.isRequired,
+    subtitle: React.PropTypes.string,
+    playCount: React.PropTypes.string.isRequired,
+    imgUrl: React.PropTypes.string.isRequired
   },
 
   render: function() {
     return (
       <div>
-        { this.props.artist }
+        <img src={ this.props.imgUrl } alt={ this.props.title } />
+        { this.props.title }
         { this.props.playCount }
       </div>
     );
