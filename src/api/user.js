@@ -34,8 +34,8 @@ exports.getTopAlbums = function(limit, callback) {
   return getJSONP(route, callback);
 };
 
-exports.getTopTracks = function(limit, period, callback) {
-  var route = routes.getTopTracks + "&limit=" + limit + "&period=" + period;
+exports.getTopTracks = function(params, callback) {
+  var route = routes.getTopTracks + formatUrl(params);
   return getJSONP(route, callback);
 };
 
