@@ -30,8 +30,10 @@ module.exports = React.createClass({
 
   setUserTopTracks: function(data) {
     if (!data) {
-      this.setState({ error: true });
-      this.loadUserTopTracks();
+      this.setState({
+        error: true,
+        loading: false
+      });
     } else {
       this.setState({
         loading: true,
@@ -39,7 +41,6 @@ module.exports = React.createClass({
         userTopTracks: data.toptracks.track
       });
 
-      // Loads here to make sure we get an accurate loading state.
       this.loadUserInfo();
     }
   },
@@ -51,7 +52,6 @@ module.exports = React.createClass({
   setUserInfo: function(data) {
     if (!data) {
       this.setState({ error: true });
-      this.loadUserInfo();
     } else {
       this.setState({
         loading: false,
@@ -90,7 +90,7 @@ module.exports = React.createClass({
   },
 
   renderLoadingState: function() {
-    var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
+    var error = "Couldn't connect to Last.fm, please try reloading."
 
     return (
       <div className="TotalTime__content">

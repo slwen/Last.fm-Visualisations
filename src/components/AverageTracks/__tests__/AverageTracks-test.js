@@ -40,11 +40,6 @@ describe('AverageTracks Component', function() {
       expect(element).toBeDefined();
       expect(errorMsg).toBeDefined();
     });
-
-    it('Attempts to re-load itself', function() {
-      expect(user.getInfo).toBeCalledWith(Component.setPlayCount);
-      expect(user.getInfo.mock.calls.length > 1).toBeTruthy();
-    });
   });
 
   describe('When the component is loading', function() {

@@ -78,11 +78,6 @@ describe('TotalTime Component', function() {
       expect(element).toBeDefined();
       expect(errorMsg).toBeDefined();
     });
-
-    it('Attempts to re-load itself', function() {
-      expect(user.getTopTracks).toBeCalledWith(100, "overall", Component.setUserTopTracks);
-      expect(user.getTopTracks.mock.calls.length > 1).toBeTruthy();
-    });
   });
 
   describe('When the component is loading', function() {

@@ -24,7 +24,7 @@ describe('TotalTrack Component', function() {
     });
 
     it('Accepts a callback function', function() {
-      expect(user.getTopAlbums).toBeCalledWith(1, Component.setTotalAlbums);
+      expect(user.getTopAlbums).toBeCalledWith({ limit: 1 }, Component.setTotalAlbums);
     });
   });
 
@@ -39,11 +39,6 @@ describe('TotalTrack Component', function() {
 
       expect(element).toBeDefined();
       expect(errorMsg).toBeDefined();
-    });
-
-    it('Attempts to re-load itself', function() {
-      expect(user.getTopAlbums).toBeCalledWith(1, Component.setTotalAlbums);
-      expect(user.getTopAlbums.mock.calls.length > 1).toBeTruthy();
     });
   });
 

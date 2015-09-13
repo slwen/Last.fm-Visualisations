@@ -23,13 +23,15 @@ module.exports = React.createClass({
   },
 
   loadTopAlbums: function() {
-    user.getTopAlbums(1, this.setTotalAlbums);
+    user.getTopAlbums({ limit: 1 }, this.setTotalAlbums);
   },
 
   setTotalAlbums: function(data) {
     if (!data) {
-      this.setState({ error: true });
-      this.loadTopAlbums();
+      this.setState({
+        error: true,
+        loading: false
+      });
     } else {
       this.setState({
         loading: false,
@@ -40,7 +42,7 @@ module.exports = React.createClass({
   },
 
   renderLoadingState: function() {
-    var error = "Apologies, loading your Last.fm data is taking a while, but we'll keep trying..."
+    var error = "Couldn't connect to Last.fm, please try reloading."
 
     return (
       <div className="TotalTime__content">
