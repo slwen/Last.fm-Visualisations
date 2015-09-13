@@ -15,10 +15,16 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="LeaderboardItem">
         <img src={ this.props.imgUrl } alt={ this.props.title } />
-        { this.props.title }
-        { this.props.playCount }
+        <div className="LeaderboardItem__body">
+          <div className="LeaderboardItem__title">
+            { this.props.title }
+          </div>
+          <div className="LeaderboardItem__playcount">
+            { this.props.playCount }
+          </div>
+        </div>
       </div>
     );
   }

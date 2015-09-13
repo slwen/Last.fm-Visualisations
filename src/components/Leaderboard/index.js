@@ -23,6 +23,8 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
+      loading: false,
+      error: false,
       items: []
     };
   },
@@ -38,12 +40,14 @@ module.exports = React.createClass({
       period: this.props.period
     };
 
+    this.setState({ loading: true });
+
     if (type === 'artists') {
       user.getTopArtists(params, this.setItems);
     }
 
     if (type === 'albums') {
-      user.getTopAlbums(1, this.setItems);
+      user.getTopAlbums(params, this.setItems);
     }
 
     if (type === 'tracks') {
@@ -52,13 +56,23 @@ module.exports = React.createClass({
   },
 
   setItems: function(data) {
-    var type = this.props.type;
+    if (!data) {
+      this.setState({
+        error: true,
+        loading: false
+      });
+    } else {
+      var type = this.props.type;
 
-    if (type === 'artists') data = data.topartists.artist;
-    if (type === 'albums') data = data.topalbums.album;
-    if (type === 'tracks') data = data.toptracks.track;
+      if (type === 'artists') data = data.topartists.artist;
+      if (type === 'albums') data = data.topalbums.album;
+      if (type === 'tracks') data = data.toptracks.track;
 
-    this.setState({ items: data });
+      this.setState({
+        loading: false,
+        items: data
+      });
+    }
   },
 
   renderEmptyState: function() {
@@ -83,6 +97,14 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    if (this.state.loading) {
+      return (
+        <div className="Leaderboard Leaderboard--loading">
+          Loading...
+        </div>
+      );
+    }
+
     if (this.state.items) {
       return (
         <div className="Leaderboard">
@@ -90,8 +112,6 @@ module.exports = React.createClass({
         </div>
       );
     }
-
-    // TODO: Add a loading state
 
     return (
       <div className="Leaderboard Leaderboard--empty">

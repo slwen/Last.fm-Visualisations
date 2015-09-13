@@ -1,1 +1,29 @@
-// TODO
+// DEPENDENCIES
+@import "../../scss/variables";
+
+.LeaderboardItem {
+  display: flex;
+  background: #fff;
+  border-bottom: 2px solid $color-mutedPurple;
+
+  img {
+    flex: 0 0 64px;
+  }
+}
+
+.LeaderboardItem__body {
+  display: flex;
+  flex: 5 0 auto;
+  align-items: center;
+}
+
+.LeaderboardItem__title {
+  flex: 100 0 auto;
+}
+
+.LeaderboardItem__playcount {
+  box-sizing: border-box;
+  flex: 1 0 100px;
+  text-align: right;
+  padding: $unit-md;
+}
