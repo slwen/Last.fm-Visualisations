@@ -8,12 +8,22 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var Route        = Router.Route;
 
+var TabBar      = require('./components/TabBar');
+var NavBar      = require('./components/NavBar');
 var Leaderboard = require('./pages/Leaderboard');
 var Dashboard   = require('./pages/Dashboard');
 
 var App = React.createClass({
   render: function() {
-    return <RouteHandler />;
+    return (
+      <div className="Application">
+        <NavBar />
+        <div className="Application__main">
+          <RouteHandler />
+        </div>
+        <TabBar />
+      </div>
+    );
   }
 });
 
