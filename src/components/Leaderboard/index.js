@@ -3,16 +3,28 @@
 require("./style.scss");
 
 var React           = require('react');
+var Reflux          = require('reflux');
+var TopTracksStore  = require('../../stores/top-tracks');
+var TopAlbumsStore  = require('../../stores/top-albums');
+var TopArtistsStore = require('../../stores/top-artists');
+var Actions         = require('../../actions');
 var map             = require('lodash/collection/map');
 var user            = require('../../api/user');
 var LeaderboardItem = require('../LeaderboardItem');
 
 module.exports = React.createClass({
   displayName: 'Leaderboard',
+
   propTypes: {
     type: React.PropTypes.oneOf(['tracks', 'albums', 'artists']),
     period: React.PropTypes.oneOf(['7-days', '30-days', 'all-time'])
   },
+
+  mixins: [
+    Reflux.listenTo(TopTracksStore, 'onChange'),
+    Reflux.listenTo(TopAlbumsStore, 'onChange'),
+    Reflux.listenTo(TopArtistsStore, 'onChange')
+  ],
 
   getDefaultProps: function() {
     return {
@@ -43,36 +55,19 @@ module.exports = React.createClass({
     this.setState({ loading: true });
 
     if (type === 'artists') {
-      user.getTopArtists(params, this.setItems);
-    }
-
-    if (type === 'albums') {
-      user.getTopAlbums(params, this.setItems);
-    }
-
-    if (type === 'tracks') {
-      user.getTopTracks(params, this.setItems);
+      Actions.getTopArtists(params);
+    } else if (type === 'albums') {
+      Actions.getTopAlbums(params);
+    } else if (type === 'tracks') {
+      Actions.getTopTracks(params);
     }
   },
 
-  setItems: function(data) {
-    if (!data) {
-      this.setState({
-        error: true,
-        loading: false
-      });
-    } else {
-      var type = this.props.type;
-
-      if (type === 'artists') data = data.topartists.artist;
-      if (type === 'albums') data = data.topalbums.album;
-      if (type === 'tracks') data = data.toptracks.track;
-
-      this.setState({
-        loading: false,
-        items: data
-      });
-    }
+  onChange: function(event, data) {
+    this.setState({
+      loading: false,
+      items: data
+    });
   },
 
   renderEmptyState: function() {
