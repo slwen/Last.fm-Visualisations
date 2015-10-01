@@ -8,16 +8,17 @@ var TopTracksStore  = require('../../stores/top-tracks');
 var TopAlbumsStore  = require('../../stores/top-albums');
 var TopArtistsStore = require('../../stores/top-artists');
 var Actions         = require('../../actions');
-var map             = require('lodash/collection/map');
-var user            = require('../../api/user');
 var LeaderboardItem = require('../LeaderboardItem');
+var user            = require('../../api/user');
+var map             = require('lodash/collection/map');
+var isEqual         = require('lodash/lang/isEqual');
 
 module.exports = React.createClass({
   displayName: 'Leaderboard',
 
   propTypes: {
     type: React.PropTypes.oneOf(['tracks', 'albums', 'artists']),
-    period: React.PropTypes.oneOf(['7-days', '30-days', 'all-time'])
+    period: React.PropTypes.oneOf(['7day', '1month', 'overall'])
   },
 
   mixins: [
@@ -29,7 +30,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       type: 'tracks',
-      period: '30-days'
+      period: '1month'
     };
   },
 
@@ -42,14 +43,20 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    this.loadItems();
+    this.loadItems(this.props);
   },
 
-  loadItems: function() {
-    var type = this.props.type;
+  componentWillUpdate: function(nextProps) {
+    if (!isEqual(this.props, nextProps)) {
+      this.loadItems(nextProps);
+    }
+  },
+
+  loadItems: function(props) {
+    var type = props.type;
     var params = {
       limit: 10,
-      period: this.props.period
+      period: props.period
     };
 
     this.setState({ loading: true });

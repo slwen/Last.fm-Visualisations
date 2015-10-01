@@ -7,23 +7,27 @@
   border-bottom: 2px solid $color-mutedPurple;
 
   img {
-    flex: 0 0 64px;
+    width: 64px;
+    display: block;
   }
 }
 
 .LeaderboardItem__body {
   display: flex;
-  flex: 5 0 auto;
+  flex: 1;
   align-items: center;
 }
 
 .LeaderboardItem__title {
-  flex: 100 0 auto;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .LeaderboardItem__playcount {
   box-sizing: border-box;
-  flex: 1 0 100px;
+  flex: 1 1 auto;
   text-align: right;
   padding: $unit-md;
 }

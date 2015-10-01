@@ -1,0 +1,12 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+
+.LeaderboardPage {
+  width: 100%;
+  align-self: flex-start;
+}
+
+.LeaderboardPage__controls {
+  background: $color-deepPurple;
+  padding: $unit-md;
+}
