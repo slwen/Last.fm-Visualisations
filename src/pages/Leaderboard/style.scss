@@ -7,6 +7,41 @@
 }
 
 .LeaderboardPage__controls {
+  display: flex;
+  justify-content: space-between;
   background: $color-deepPurple;
   padding: $unit-md;
+}
+
+.LeaderboardPage__select {
+  flex: 1 1 auto;
+  margin: $unit-sm;
+  border: 1px solid $color-mutedPurple;
+  position: relative;
+
+  select {
+    box-sizing: border-box;
+    background: none;
+    border: 0;
+    color: #fff;
+    border-radius: 0;
+    width: 100%;
+    padding: $unit-md;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: $unit-md;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $color-mutedPurple;
+  }
 }

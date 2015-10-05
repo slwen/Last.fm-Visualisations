@@ -27,16 +27,21 @@ module.exports = React.createClass({
     return (
       <div className="LeaderboardPage">
         <div className="LeaderboardPage__controls">
-          <select onChange={ this.handleTypeChange }>
-            <option value="tracks">Top Tracks</option>
-            <option value="albums">Top Albums</option>
-            <option value="artists">Top Artists</option>
-          </select>
-          <select onChange={ this.handlePeriodChange }>
-            <option value="7day">Last 7 Days</option>
-            <option value="1month">Last Month</option>
-            <option value="overall">All Time</option>
-          </select>
+          <div className="LeaderboardPage__select">
+            <select onChange={ this.handleTypeChange }>
+              <option value="tracks">Top Tracks</option>
+              <option value="albums">Top Albums</option>
+              <option value="artists">Top Artists</option>
+            </select>
+          </div>
+
+          <div className="LeaderboardPage__select">
+            <select onChange={ this.handlePeriodChange }>
+              <option value="7day">Last 7 Days</option>
+              <option value="1month">Last Month</option>
+              <option value="overall">All Time</option>
+            </select>
+          </div>
         </div>
         <Leaderboard type={ this.state.type } period={ this.state.period } />
       </div>
