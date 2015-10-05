@@ -7,8 +7,10 @@
   border-bottom: 2px solid $color-mutedPurple;
 
   img {
-    width: 64px;
+    width: 76px;
+    height: 76px;
     display: block;
+    padding-right: $unit-sm;
   }
 }
 
@@ -23,6 +25,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+.LeaderboardItem__subtitle {
+  font-size: $size-xs;
+  color: $color-slate;
+  font-weight: normal;
 }
 
 .LeaderboardItem__playcount {
@@ -30,4 +39,6 @@
   flex: 1 1 auto;
   text-align: right;
   padding: $unit-md;
+  font-size: $size-xs;
+  color: $color-slate;
 }
