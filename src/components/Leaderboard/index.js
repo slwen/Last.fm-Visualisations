@@ -10,8 +10,9 @@ var TopArtistsStore = require('../../stores/top-artists');
 var Actions         = require('../../actions');
 var LeaderboardItem = require('../LeaderboardItem');
 var user            = require('../../api/user');
-var map             = require('lodash/collection/map');
 var isEqual         = require('lodash/lang/isEqual');
+var map             = require('lodash/collection/map');
+var has             = require('lodash/object/has');
 
 module.exports = React.createClass({
   displayName: 'Leaderboard',
@@ -90,9 +91,9 @@ module.exports = React.createClass({
       return (
         <LeaderboardItem
           title={ item.name }
-          subtitle={ 'blah' }
+          subtitle={ has(item, 'artist') ? item.artist.name : '' }
           playCount={ item.playcount }
-          imgUrl={ item.image[1]['#text'] }
+          imgUrl={ item.image[2]['#text'] }
           key={ i } />
       );
     });

@@ -13,6 +13,18 @@ module.exports = React.createClass({
     imgUrl: React.PropTypes.string.isRequired
   },
 
+  renderSubtitle: function() {
+    var subtitle = this.props.subtitle;
+
+    if (subtitle) {
+      return (
+        <div className="LeaderboardItem__subtitle">
+          { subtitle }
+        </div>
+      );
+    }
+  },
+
   render: function() {
     return (
       <div className="LeaderboardItem">
@@ -20,6 +32,7 @@ module.exports = React.createClass({
         <div className="LeaderboardItem__body">
           <div className="LeaderboardItem__title">
             { this.props.title }
+            { this.renderSubtitle() }
           </div>
           <div className="LeaderboardItem__playcount">
             { this.props.playCount }
