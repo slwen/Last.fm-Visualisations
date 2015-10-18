@@ -1,4 +1,35 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
 .Leaderboard {
   width: 100%;
   align-self: flex-start;
+
+  &--loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: $color-lightPurple;
+  }
 }
+
+.Leaderboard__loading-msg {
+  color: $color-deepPurple;
+  width: 75%;
+  text-align: center;
+
+  h4 {
+    font-size: $size-md;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: $size-xs;
+  }
+}
+
+@include spinner($size-md, 1s, $color-deepPurple);

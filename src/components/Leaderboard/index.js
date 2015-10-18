@@ -157,7 +157,11 @@ export default React.createClass({
     if (this.state.loading) {
       return (
         <div className="Leaderboard Leaderboard--loading">
-          Loading...
+          <div className="Leaderboard__spinner spinner"></div>
+          <div className="Leaderboard__loading-msg">
+            <h4>Crunching the numbers from your Last.fm profile.</h4>
+            <p>This should only take a moment.</p>
+          </div>
         </div>
       );
     }
