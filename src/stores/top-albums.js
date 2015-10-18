@@ -1,21 +1,21 @@
 'use strict';
 
-var Reflux  = require('reflux');
-var Actions = require('../actions');
-var user    = require('../api/user');
+import Reflux from 'reflux';
+import Actions from '../actions';
+import user from '../api/user';
 
 module.exports = Reflux.createStore({
   listenables: [Actions],
 
-  getTopAlbums: function(params) {
-    user.getTopAlbums(params, function(res) {
+  getTopAlbums(params) {
+    user.getTopAlbums(params, res => {
       this.topAlbums = res.topalbums.album;
       this.metadata = res.topalbums['@attr'];
       this.triggerChange();
-    }.bind(this));
+    });
   },
 
-  triggerChange: function() {
+  triggerChange() {
     this.trigger('change', this.topAlbums, this.metadata);
   }
 });

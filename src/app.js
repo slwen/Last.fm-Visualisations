@@ -2,19 +2,21 @@
 
 require("./app.scss");
 
-var React        = require('react');
-var Router       = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var DefaultRoute = Router.DefaultRoute;
-var Route        = Router.Route;
+import React from 'react';
+import Router from 'react-router';
+import TabBar from './components/TabBar';
+import NavBar from './components/NavBar';
+import Leaderboard from './pages/Leaderboard';
+import Dashboard from './pages/Dashboard';
 
-var TabBar      = require('./components/TabBar');
-var NavBar      = require('./components/NavBar');
-var Leaderboard = require('./pages/Leaderboard');
-var Dashboard   = require('./pages/Dashboard');
+const Route        = Router.Route;
+const DefaultRoute = Router.DefaultRoute;
+const RouteHandler = Router.RouteHandler;
 
-var App = React.createClass({
-  render: function() {
+const App = React.createClass({
+  displayName: 'App',
+
+  render() {
     return (
       <div className="Application">
         <NavBar />
@@ -27,7 +29,7 @@ var App = React.createClass({
   }
 });
 
-var routes = (
+const routes = (
   <Route handler={ App }>
     <DefaultRoute handler={ Dashboard }/>
     <Route name="dashboard" path="dashboard" handler={ Dashboard } />

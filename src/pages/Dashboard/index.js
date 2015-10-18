@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-var React       = require('react');
-var TotalTracks = require('../../components/TotalTracks');
+import React from 'react';
+import TotalTracks from '../../components/TotalTracks';
 
 module.exports = React.createClass({
   displayName: 'DashboardPage',
 
-  render: function() {
+  render() {
     return <TotalTracks />;
   }
 });

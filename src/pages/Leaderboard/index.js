@@ -1,29 +1,29 @@
-"use strict";
+'use strict';
 
-require("./style.scss");
+require('./style.scss');
 
-var React       = require('react');
-var Leaderboard = require('../../components/Leaderboard');
+import React from 'react';
+import Leaderboard from '../../components/Leaderboard';
 
 module.exports = React.createClass({
   displayName: 'LeaderboardPage',
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       type: 'tracks',
       period: '1month'
     };
   },
 
-  handleTypeChange: function(e) {
+  handleTypeChange(e) {
     this.setState({ type: e.target.value });
   },
 
-  handlePeriodChange: function(e) {
+  handlePeriodChange(e) {
     this.setState({ period: e.target.value });
   },
 
-  render: function() {
+  render() {
     return (
       <div className="LeaderboardPage">
         <div className="LeaderboardPage__controls">
@@ -34,7 +34,6 @@ module.exports = React.createClass({
               <option value="artists">Top Artists</option>
             </select>
           </div>
-
           <div className="LeaderboardPage__select">
             <select onChange={ this.handlePeriodChange }>
               <option value="7day">Last 7 Days</option>

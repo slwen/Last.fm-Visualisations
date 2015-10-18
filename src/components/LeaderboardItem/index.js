@@ -1,20 +1,21 @@
-"use strict";
+'use strict';
 
 require("./style.scss");
 
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LeaderboardItem',
   propTypes: {
     title: React.PropTypes.string.isRequired,
     subtitle: React.PropTypes.string,
     playCount: React.PropTypes.string.isRequired,
-    imgUrl: React.PropTypes.string.isRequired
+    imgUrl: React.PropTypes.string.isRequired,
+    style: React.PropTypes.obj
   },
 
-  renderSubtitle: function() {
-    var subtitle = this.props.subtitle;
+  renderSubtitle() {
+    const { subtitle } = this.props;
 
     if (subtitle) {
       return (
@@ -25,9 +26,9 @@ module.exports = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     return (
-      <div className="LeaderboardItem">
+      <div className="LeaderboardItem" style={ this.props.style }>
         <img src={ this.props.imgUrl } alt={ this.props.title } />
         <div className="LeaderboardItem__body">
           <div className="LeaderboardItem__title">

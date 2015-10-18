@@ -2,13 +2,12 @@
 
 require("./style.scss");
 
-var _               = require('lodash');
-var React           = require('react');
-var TabBarButton    = require('../TabBarButton');
-var iconCompare     = require("./icon--compare.svg");
-var iconDashboard   = require("./icon--dashboard.svg");
-var iconLeaderboard = require("./icon--leaderboard.svg");
-var iconSettings    = require("./icon--settings.svg");
+import React from 'react';
+import TabBarButton from '../TabBarButton';
+import iconCompare from './icon--compare.svg';
+import iconDashboard from './icon--dashboard.svg';
+import iconLeaderboard from './icon--leaderboard.svg';
+import iconSettings from './icon--settings.svg';
 
 module.exports = React.createClass({
   displayName: 'TabBar',
@@ -17,36 +16,36 @@ module.exports = React.createClass({
     menuItems: React.PropTypes.arrayOf(React.PropTypes.object)
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       selected: 0,
       menuItems: [
         {
-          name: "Dashboard",
+          name: 'Dashboard',
           icon: iconDashboard,
-          link: "dashboard"
+          link: 'dashboard'
         },
         {
-          name: "Leaderboard",
+          name: 'Leaderboard',
           icon: iconLeaderboard,
-          link: "leaderboard"
+          link: 'leaderboard'
         },
         {
-          name: "Compare",
+          name: 'Compare',
           icon: iconCompare,
-          link: "leaderboard"
+          link: 'leaderboard'
         },
         {
-          name: "Settings",
+          name: 'Settings',
           icon: iconSettings,
-          link: "leaderboard"
+          link: 'leaderboard'
         }
       ]
     };
   },
 
-  renderTabBarButtons: function() {
-    return this.props.menuItems.map(function(item, i) {
+  renderTabBarButtons() {
+    return this.props.menuItems.map((item, i) => {
       return (
         <TabBarButton
           key={ "TabBarButton-" + i }
@@ -54,10 +53,10 @@ module.exports = React.createClass({
           icon={ item.icon }
           link={ item.link } />
       );
-    }, this);
+    });
   },
 
-  render: function() {
+  render() {
     return (
       <div className="TabBar">
         { this.renderTabBarButtons() }

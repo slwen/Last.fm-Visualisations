@@ -8,33 +8,13 @@ module.exports = {
     publicPath: 'http://localhost:8090/assets'
   },
   module: {
-    postLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "jshint-loader"
-      }
-    ],
     loaders: [
-      {
-        test: /\.scss$/,
-        loader: "style!css!sass"
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version'
-      },
-      {
-        test: /\.(png|jpg|svg)$/,
-        loader: 'url-loader?limit=8192'
-      },
-      {
-        test: /\.js$/,
-        loader: "jsx-loader?insertPragma=React.DOM&harmony"
-      },
-      {
-        test: /\.json$/, loader: "json"
-      }
+      { test: /\.scss$/, loader: "style!css!sass" },
+      { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version' },
+      { test: /\.(png|jpg|svg)$/, loader: 'url-loader?limit=8192' },
+      { test: /\.js?$/, loader: 'babel', exclude: /(node_modules|bower_components)/ },
+      { test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/ },
+      { test: /\.json$/, loader: "json" }
     ]
   },
   externals: {

@@ -1,21 +1,21 @@
 'use strict';
 
-var Reflux  = require('reflux');
-var Actions = require('../actions');
-var user    = require('../api/user');
+import Reflux from 'reflux';
+import Actions from '../actions';
+import user from '../api/user';
 
 module.exports = Reflux.createStore({
   listenables: [Actions],
 
-  getTopTracks: function(params) {
-    user.getTopTracks(params, function(res) {
+  getTopTracks(params) {
+    user.getTopTracks(params, res => {
       this.topTracks = res.toptracks.track;
       this.metadata = res.toptracks['@attr'];
       this.triggerChange();
-    }.bind(this));
+    });
   },
 
-  triggerChange: function() {
+  triggerChange() {
     this.trigger('change', this.topTracks, this.metadata);
   }
 });
