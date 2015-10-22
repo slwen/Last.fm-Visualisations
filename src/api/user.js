@@ -1,45 +1,45 @@
-"use strict";
+'use strict';
 
-var _           = require('lodash');
-var getJSONP    = require('./getJSONP');
-var credentials = require("./credentials.json");
-var baseUrl     = "http://ws.audioscrobbler.com/2.0/?format=json&user=slwen&api_key=" + credentials.key;
+import getJSONP from './getJSONP';
+import credentials from './credentials.json';
+import map from 'lodash/collection/map';
 
-var routes = {
-  getInfo: baseUrl + "&method=user.getinfo",
-  getTopAlbums: baseUrl + "&method=user.gettopalbums",
-  getTopTracks: baseUrl + "&method=user.gettoptracks",
-  getTopArtists: baseUrl + "&method=user.gettopartists",
-  getRecentTracks: baseUrl + "&method=user.getrecenttracks"
+const baseUrl = `http://ws.audioscrobbler.com/2.0/?format=json&user=slwen&api_key=${credentials.key}`;
+const routes = {
+  getInfo: `${baseUrl}&method=user.getinfo`,
+  getTopAlbums: `${baseUrl}&method=user.gettopalbums`,
+  getTopTracks: `${baseUrl}&method=user.gettoptracks`,
+  getTopArtists: `${baseUrl}&method=user.gettopartists`,
+  getRecentTracks: `${baseUrl}&method=user.getrecenttracks`
 };
 
-var formatUrl = function(params) {
-  return _.map(params, function(value, key) {
-    return '&' + key + '=' + value;
+function formatUrl(params) {
+  return map(params, function(value, key) {
+    return `&${key}=${value}`;
   }).join('');
 };
 
-exports.getInfo = function(callback) {
-  var route = routes.getInfo;
+export function getInfo(callback) {
+  const route = routes.getInfo;
   return getJSONP(routes.getInfo, callback);
-};
+}
 
-exports.getTopArtists = function(params, callback) {
-  var route = routes.getTopArtists + formatUrl(params);
+export function getTopArtists(params, callback) {
+  const route = routes.getTopArtists + formatUrl(params);
   return getJSONP(route, callback);
-};
+}
 
-exports.getTopAlbums = function(params, callback) {
-  var route = routes.getTopAlbums + formatUrl(params);
+export function getTopAlbums(params, callback) {
+  const route = routes.getTopAlbums + formatUrl(params);
   return getJSONP(route, callback);
-};
+}
 
-exports.getTopTracks = function(params, callback) {
-  var route = routes.getTopTracks + formatUrl(params);
+export function getTopTracks(params, callback) {
+  const route = routes.getTopTracks + formatUrl(params);
   return getJSONP(route, callback);
-};
+}
 
-exports.getRecentTracks = function(params, callback) {
-  var route = routes.getRecentTracks + formatUrl(params);
+export function getRecentTracks(params, callback) {
+  const route = routes.getRecentTracks + formatUrl(params);
   return getJSONP(route, callback);
-};
+}

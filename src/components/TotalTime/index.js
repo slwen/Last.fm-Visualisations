@@ -1,132 +1,61 @@
-"use strict";
+'use strict';
 
 require("./style.scss");
 
-var _       = require('lodash');
-var React   = require('react');
-var numeral = require('numeral');
-var moment  = require('moment');
-var user    = require('../../api/user');
+import React from 'react';
+import numeral from 'numeral';
+import moment from 'moment';
+import forEach from 'lodash/collection/forEach';
+import map from 'lodash/collection/map';
 
 module.exports = React.createClass({
   displayName: 'TotalTime',
+  propTypes: {
+    playCount: React.PropTypes.string.isRequired,
+    topTracks: React.PropTypes.array.isRequired
+  },
 
-  getInitialState: function() {
+  getDefaultProps() {
     return {
-      loading: true,
-      error: false,
-      userInfo: null,
-      userTopTracks: null
-    }
+      playCount: '0',
+      topTracks: []
+    };
   },
 
-  componentWillMount: function() {
-    this.loadUserTopTracks();
-  },
+  sumPlaycounts() {
+    let sumPlaycount = 0;
 
-  loadUserTopTracks: function() {
-    user.getTopTracks(100, "overall", this.setUserTopTracks);
-  },
-
-  setUserTopTracks: function(data) {
-    if (!data) {
-      this.setState({
-        error: true,
-        loading: false
-      });
-    } else {
-      this.setState({
-        loading: true,
-        error: false,
-        userTopTracks: data.toptracks.track
-      });
-
-      this.loadUserInfo();
-    }
-  },
-
-  loadUserInfo: function() {
-    user.getInfo(this.setUserInfo);
-  },
-
-  setUserInfo: function(data) {
-    if (!data) {
-      this.setState({ error: true });
-    } else {
-      this.setState({
-        loading: false,
-        error: false,
-        userInfo: data.user
-      });
-    }
-  },
-
-  sumPlaycounts: function() {
-    var sumPlaycount = 0;
-
-    _.forEach(this.state.userTopTracks, function(track) {
+    forEach(this.props.topTracks, track => {
       sumPlaycount += parseFloat(track.playcount);
     });
 
     return sumPlaycount;
   },
 
-  calculateWeightedDuration: function(playcount, duration, summedPlaycounts) {
-    var weight = playcount / summedPlaycounts;
+  calculateWeightedDuration(playcount, duration, summedPlaycounts) {
+    const weight = playcount / summedPlaycounts;
     return weight * duration;
   },
 
-  calculateAverageDuration: function(topTracks) {
-    var weightedDuration;
-    var averageDuration = 0;
-    var summedPlaycounts = this.sumPlaycounts();
+  calculateAverageDuration(topTracks) {
+    let weightedDuration;
+    let averageDuration = 0;
+    let summedPlaycounts = this.sumPlaycounts();
 
-    _.map(topTracks, function(track) {
+    map(topTracks, track => {
       weightedDuration = this.calculateWeightedDuration(track.playcount, track.duration, summedPlaycounts);
       averageDuration += weightedDuration;
-    }, this);
+    });
 
     return averageDuration;
   },
 
-  renderLoadingState: function() {
-    var error = "Couldn't connect to Last.fm, please try reloading."
-
-    return (
-      <div className="TotalTime__content">
-        <div className="TotalTime__spinner spinner"></div>
-        <div className="TotalTime__error-msg">
-          { error }
-        </div>
-      </div>
-    );
-  },
-
-  render: function() {
-    var userInfo  = this.state.userInfo;
-    var topTracks = this.state.userTopTracks;
-
-    if (userInfo && topTracks) {
-      var averageDuration = this.calculateAverageDuration(topTracks);
-      var estimatedTotal  = averageDuration * userInfo.playcount;
-      var formattedTotal  = numeral(moment.duration(estimatedTotal, 'seconds').asHours()).format('0,0');
-    }
-
-    if (this.state.error) {
-      return (
-        <div className="TotalTime TotalTime--loading TotalTime--error">
-          { this.renderLoadingState() }
-        </div>
-      );
-    }
-
-    if (this.state.loading) {
-      return (
-        <div className="TotalTime TotalTime--loading">
-          { this.renderLoadingState() }
-        </div>
-      );
-    }
+  render() {
+    let playCount       = this.props.playCount;
+    let topTracks       = this.props.topTracks;
+    let averageDuration = this.calculateAverageDuration(topTracks);
+    let estimatedTotal  = averageDuration * playCount;
+    let formattedTotal  = numeral(moment.duration(estimatedTotal, 'seconds').asHours()).format('0,0');
 
     return (
       <div className="TotalTime">

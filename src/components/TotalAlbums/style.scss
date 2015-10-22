@@ -1,16 +1,10 @@
 // DEPENDENCIES
 @import "../../scss/variables";
-@import "../../scss/mixins";
 @import "../../scss/modules/tiles";
 
 // COMPONENT STYLES
 .TotalAlbums {
   @extend %tile;
-}
-
-.TotalAlbums__content,
-.TotalAlbums__icon {
-  @extend %tile-blocks;
 }
 
 .TotalAlbums__content {
@@ -25,22 +19,16 @@
   @extend %tile-label;
 }
 
-.TotalAlbums__error-msg {
-  @extend %tile-error-msg;
+.TotalAlbums__favs {
+  padding-top: 5px;
 }
 
-.TotalAlbums--error .TotalAlbums__error-msg {
-  @extend %tile-error-msg-show;
-}
-
-@include spinner($size-md, 1s, $color-deepPurple);
-
-
-.example-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
+.TotalAlbums__fav {
+  display: inline-block;
+  padding: 1px 5px;
+  margin-right: 2px;
+  border-radius: 3px;
+  background: $color-hotPink;
+  color: #fff;
+  font-size: $size-xxs;
 }

@@ -1,11 +1,9 @@
-"use strict";
+'use strict';
 
-var jsonp = require('jsonp');
+import jsonp from 'jsonp';
 
-function getJSONP(url, callback) {
-  return jsonp(url, {}, function(error, data) {
+export default function getJSONP(url, callback) {
+  return jsonp(url, {}, (error, data) => {
     callback(error ? null : data);
   });
 }
-
-module.exports = getJSONP;

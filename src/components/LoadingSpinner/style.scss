@@ -1,0 +1,34 @@
+// DEPENDENCIES
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+// COMPONENT STYLES
+.LoadingSpinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: $color-lightPurple;
+}
+
+.LoadingSpinner__msg {
+  color: $color-deepPurple;
+  width: 75%;
+  text-align: center;
+
+  h4 {
+    font-size: $size-md;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: $size-xs;
+  }
+}
+
+.LoadingSpinner__spinner {
+  @include spinner($size-md, 1s, $color-deepPurple);
+}
+

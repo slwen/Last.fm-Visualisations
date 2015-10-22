@@ -11,7 +11,7 @@ export default React.createClass({
     subtitle: React.PropTypes.string,
     playCount: React.PropTypes.string.isRequired,
     imgUrl: React.PropTypes.string.isRequired,
-    style: React.PropTypes.obj
+    style: React.PropTypes.object.isRequired
   },
 
   renderSubtitle() {

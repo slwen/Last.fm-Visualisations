@@ -1,45 +1,30 @@
 // DEPENDENCIES
 @import "../../scss/variables";
-@import "../../scss/mixins";
 
 // COMPONENT STYLES
 .TotalTracks {
   text-align: center;
-  background: #fff;
-  padding-bottom: $unit-xl;
+  background: $color-lightPurple;
+  padding: $unit-xl 0;
   width: 100%;
   height: 100%;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-}
-
-.TotalTracks__icon img {
-  width: 179px;
-}
-
-.TotalTracks__content {
-
+  flex-direction: column;
 }
 
 .TotalTracks__playcount {
   font-weight: bold;
-  font-size: $size-xl;
+  font-size: $size-xxxl;
   color: $color-deepPurple;
-  margin-top: -50px;
+  line-height: 1;
 }
 
 .TotalTracks__label {
   font-size: $size-xs;
   color: $color-deepPurple;
+  text-transform: uppercase;
+  padding-top: $size-sm;
 }
-
-.TotalTracks__error-msg {
-
-}
-
-.TotalTracks--error .TotalTracks__error-msg {
-
-}
-
-@include spinner($size-md, 1s, $color-deepPurple);

@@ -13,7 +13,7 @@
 
 // LOADING SPINNER
 @mixin spinner($size, $speed, $color) {
-  .spinner {
+  & {
     height: $size;
     width: $size;
     margin: 0 auto;

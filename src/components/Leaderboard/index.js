@@ -9,6 +9,7 @@ import TopAlbumsStore from '../../stores/top-albums';
 import TopArtistsStore from '../../stores/top-artists';
 import Actions from '../../actions';
 import LeaderboardItem from '../LeaderboardItem';
+import LoadingSpinner from '../LoadingSpinner';
 import user from '../../api/user';
 import isEqual from 'lodash/lang/isEqual';
 import map from 'lodash/collection/map';
@@ -154,17 +155,7 @@ export default React.createClass({
   },
 
   render() {
-    if (this.state.loading) {
-      return (
-        <div className="Leaderboard Leaderboard--loading">
-          <div className="Leaderboard__spinner spinner"></div>
-          <div className="Leaderboard__loading-msg">
-            <h4>Crunching the numbers from your Last.fm profile.</h4>
-            <p>This should only take a moment.</p>
-          </div>
-        </div>
-      );
-    }
+    if (this.state.loading) return <LoadingSpinner />;
 
     if (this.state.items) {
       return (

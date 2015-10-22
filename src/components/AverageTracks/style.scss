@@ -1,16 +1,10 @@
 // DEPENDENCIES
 @import "../../scss/variables";
-@import "../../scss/mixins";
 @import "../../scss/modules/tiles";
 
 // COMPONENT STYLES
 .AverageTracks {
   @extend %tile;
-}
-
-.AverageTracks__content,
-.AverageTracks__icon {
-  @extend %tile-blocks;
 }
 
 .AverageTracks__content {
@@ -24,13 +18,3 @@
 .AverageTracks__label {
   @extend %tile-label;
 }
-
-.AverageTracks__error-msg {
-  @extend %tile-error-msg;
-}
-
-.AverageTracks--error .AverageTracks__error-msg {
-  @extend %tile-error-msg-show;
-}
-
-@include spinner($size-md, 1s, $color-deepPurple);

@@ -5,5 +5,6 @@ import Reflux from 'reflux';
 export default Reflux.createActions([
   'getTopTracks',
   'getTopAlbums',
-  'getTopArtists'
+  'getTopArtists',
+  'getUserInfo'
 ]);

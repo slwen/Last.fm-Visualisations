@@ -1,76 +1,26 @@
-"use strict";
+'use strict';
 
 require("./style.scss");
 
-var React   = require('react');
-var numeral = require('numeral');
-var user    = require('../../api/user');
-var icon    = require("./icon.svg");
+import React from 'react';
+import numeral from 'numeral';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TotalTracks',
-
-  getInitialState: function() {
-    return {
-      loading: true,
-      playCount: 0
-    };
+  propTypes: {
+    playCount: React.PropTypes.string.isRequired
   },
 
-  componentWillMount: function() {
-    this.loadPlayCount();
+  getDefaultProps() {
+    return { playCount: '0' }
   },
 
-  loadPlayCount: function() {
-    user.getInfo(this.setPlayCount);
-  },
-
-  setPlayCount: function(data) {
-    if (!data) {
-      this.setState({ error: true });
-      this.loadPlayCount();
-    } else {
-      this.setState({
-        loading: false,
-        error: false,
-        playCount: data.user.playcount
-      });
-    }
-  },
-
-  renderLoadingState: function() {
-    return (
-      <div className="TotalTime__content">
-        <div className="TotalTracks__spinner spinner"></div>
-      </div>
-    );
-  },
-
-  render: function() {
-    var playCount = numeral(this.state.playCount).format("0,0");
-
-    if (this.state.error) {
-      return (
-        <div className="TotalTracks TotalTracks--loading TotalTracks--error">
-          <div className="TotalTracks__error-msg">Error...</div>
-        </div>
-      );
-    }
-
-    if (this.state.loading) {
-      return (
-        <div className="TotalTracks TotalTracks--loading">
-          { this.renderLoadingState() }
-        </div>
-      );
-    }
+  render() {
+    let playCount = numeral(this.props.playCount).format("0,0");
 
     return (
       <div className="TotalTracks">
         <div className="TotalTracks__content">
-          <div className="TotalTracks__icon">
-            <img src={ icon } />
-          </div>
           <div className="TotalTracks__playcount">
             { playCount }
           </div>
