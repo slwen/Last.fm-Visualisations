@@ -1,11 +1,11 @@
-var ReactTools = require('react-tools');
+var babelJest = require("babel-jest");
 
 module.exports = {
-  process: function(src, path) {
-    if (path.match(/\.jsx?$/)) {
-      src = ReactTools.transform('/** @jsx React.DOM */' + src, {harmony: true});
-    } else src = '';
-
-    return src;
+  process: function(src, filename) {
+    if (filename.match(/.svg$/) || filename.match(/.scss$/)) {
+      return '';
+    } else {
+      return babelJest.process(src, filename);
+    }
   }
 };
