@@ -52,7 +52,7 @@
     "test": "jest"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/preprocessor",
+    "scriptPreprocessor": "<rootDir>/test/helpers/preprocessor",
     "unmockedModulePathPatterns": [
       "react"
     ],
