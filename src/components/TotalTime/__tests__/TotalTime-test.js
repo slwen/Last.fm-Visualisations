@@ -1,60 +1,24 @@
-"use strict";
-
-var path = '../';
+'use strict';
 
 jest.autoMockOff();
-jest.mock('../../../api/user');
 
 describe('TotalTime Component', function() {
-  var React       = require('react/addons');
-  var user        = require('../../../api/user');
-  var TestUtils   = React.addons.TestUtils;
+  var React = require('react/addons');
+  var TotalTime = require('../');
+  var TestUtils = React.addons.TestUtils;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
-  var TotalTime   = require(path);
-  var Component;
-
-  var topTracksResponse = [
-    { playcount: 100, duration: 300 },
-    { playcount: 50, duration: 100 },
-    { playcount: 25, duration: 600 }
+  var mockTopTracks = [
+    { playcount: 100, duration: 500 },
+    { playcount: 50, duration: 600 },
+    { playcount: 80, duration: 200 }
   ];
-
-  var userInfoResponse = { playcount: 100000 };
-
-  describe('Collecting the correct data from the last.fm API', function() {
-    beforeEach(function() {
-      user.getInfo.mockClear();
-      user.getTopTracks.mockClear();
-      Component = TestUtils.renderIntoDocument(<TotalTime />);
-    });
-
-    it('Makes one correct request for user top tracks', function() {
-      expect(user.getTopTracks.mock.calls.length).toEqual(1);
-    });
-
-    it('Accepts a callback function after loading top tracks', function() {
-      expect(user.getTopTracks).toBeCalledWith(100, "overall", Component.setUserTopTracks);
-    });
-
-    it('Makes one correct request for user info', function() {
-      Component.loadUserInfo();
-      expect(user.getInfo.mock.calls.length).toEqual(1);
-    });
-
-    it('Accepts a callback function after loading user info', function() {
-      Component.loadUserInfo();
-      expect(user.getInfo).toBeCalledWith(Component.setUserInfo);
-    });
-  });
+  var Component;
 
   describe('Calculating total hours of playtime, based on a weighted average track length', function() {
     beforeEach(function() {
-      Component = TestUtils.renderIntoDocument(<TotalTime />);
-      Component.setState({ userTopTracks: topTracksResponse });
-    });
-
-    it('Sums together the playcount for each of the users top tracks', function() {
-      expect(Component.sumPlaycounts()).toEqual(175);
+      Component = TestUtils.renderIntoDocument(
+        <TotalTime playCount={ '100' } topTracks={ mockTopTracks } />
+      );
     });
 
     it('Can calculate a weighted duration for each track', function() {
@@ -62,53 +26,17 @@ describe('TotalTime Component', function() {
     });
 
     it('Adds the weighted duration of each track together', function() {
-      expect(Component.calculateAverageDuration(Component.state.userTopTracks)).toEqual(285.7142857142857);
-    });
-  });
-
-  describe('When no data is returned', function() {
-    beforeEach(function() {
-      Component.setUserTopTracks(null);
-    });
-
-    it('Adds an error class to the container element', function() {
-      var element = findByClass(Component, "TotalTime--error");
-      var errorMsg = findByClass(Component, "TotalTime__error-msg");
-
-      expect(element).toBeDefined();
-      expect(errorMsg).toBeDefined();
-    });
-  });
-
-  describe('When the component is loading', function() {
-    it('Displays a loading icon by default', function() {
-      var spinner = findByClass(Component, "TotalTime__spinner");
-
-      expect(spinner).toBeDefined();
-    });
-  });
-
-  describe('When data is retreived', function() {
-    beforeEach(function() {
-      Component = TestUtils.renderIntoDocument(<TotalTime />);
-
-      Component.setState({
-        loading: false,
-        userInfo: userInfoResponse,
-        userTopTracks: topTracksResponse
-      });
+      expect(Component.calculateAverageDuration(Component.props.topTracks)).toEqual(417.3913043478261);
     });
 
     it('Displays a formatted number of hours', function() {
-      var playcount = findByClass(Component, "TotalTime__hours");
-
-      expect(playcount).toBeDefined();
-      expect(playcount.getDOMNode().textContent).toBe('7,937');
+      var hours = findByClass(Component, "TotalTime__hours");
+      expect(hours).toBeDefined();
+      expect(hours.getDOMNode().textContent).toBe('12');
     });
 
     it('Displays a label', function() {
       var label = findByClass(Component, "TotalTime__label");
-
       expect(label.getDOMNode().textContent).toBe('Hours Spent');
     });
   });
