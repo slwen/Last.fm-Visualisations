@@ -8,7 +8,7 @@ import moment from 'moment';
 import forEach from 'lodash/collection/forEach';
 import map from 'lodash/collection/map';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TotalTime',
   propTypes: {
     playCount: React.PropTypes.string.isRequired,
